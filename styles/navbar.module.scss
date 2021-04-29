@@ -1,0 +1,149 @@
+.container {
+  background: hsla(0, 0%, 0%, 1);
+  text-align: center;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+}
+
+.logo {
+  margin: 0;
+  color: hsla(360, 100%, 100%, 1);
+}
+
+.toggle {
+  display: none;
+}
+
+.toggle-label {
+  color: hsla(360, 100%, 100%, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  span, span::before, span::after {
+    display: block;
+    background: hsla(360, 100%, 100%, 1);
+    height: 2px;
+    width: 2em;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  span::before, span::after {
+    content: '';
+    position: absolute;
+  }
+
+  span::before {
+    bottom: 8px;
+  }
+
+  span::after {
+    top: 8px;
+  }
+}
+
+.nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: hsla(0, 0%, 0%, 1);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    margin-bottom: 1em;
+    margin-left: 1em;
+  }
+
+  a {
+    color: hsla(360, 100%, 100%, 1);
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+
+    &:hover {
+      color: hsla(360, 0%, 50%, 1);
+    }
+  }
+}
+
+.toggle:checked ~ nav {
+  transform: scale(1, 1);
+
+  a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 250ms;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .toggle-label {
+    display: none;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+
+  .logo {
+    grid-column: 2 / 3;
+  }
+
+  .nav {
+    all: unset;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    ul {
+      display: flex;
+    }
+
+    li {
+      margin-left: 3em;
+      margin-bottom: 0;
+    }
+
+    a {
+      opacity: 1;
+      position: relative;
+
+      &:before {
+        content: '';
+        display: block;
+        height: 5px;
+        background: hsla(360, 0%, 50%, 1);
+        position: absolute;
+        bottom: -.75em;
+        left: 0;
+        right: 0;
+        transform: scale(0, 1);
+        transform-origin: left;
+        transition: transform ease-in-out 250ms;
+      }
+
+      &:hover::before {
+        transform: scale(1, 1);
+      }
+    }
+  }
+}

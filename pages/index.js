@@ -47,15 +47,8 @@ export async function getAllPostIds({ blogData }) {
 
 export async function getStaticProps() {
   const token = await authenticateRequest();
-
-  // console.log('Check token:');
-  // console.log(token['auth_token']);
-
   const url = 'https://sebibasti-blog-api.herokuapp.com/posts'
   const blogData = await getData(url, token);
-
-  // console.log('Check data:');
-  // console.log(blogData);
 
   return {
     props: { blogData }

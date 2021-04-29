@@ -1,5 +1,8 @@
+import Head from 'next/head'
 import Layout from '../../components/layout'
+import Date from '../../components/date'
 import { authenticateRequest, getData, getAllPostIds } from '../index'
+import utilStyles from '../../styles/utils.module.css'
 
 export async function getStaticPaths() {
   const token = await authenticateRequest();
@@ -37,11 +40,16 @@ export default function Post({ postData }) {
   console.log(postData);
   return (
     <Layout>
-      {postData['data'].attributes.title}
-      <br/>
-      {postData['data'].id}
-      <br/>
-      {postData['data'].attributes.created_at}
+      <Head>
+        <title>{postData['data'].attributes.title}</title>
+      </Head>
+      <article>
+        <h1 className={utilStyles.headingXl}>{postData['data'].attributes.title}</h1>
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData['data'].attributes.created_at} />
+        </div>
+      </article>
+    {/*  TODO: - implement logic for segments */}
     </Layout>
   )
 }

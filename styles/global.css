@@ -8,8 +8,10 @@ body {
     font-size: 18px;
 }
 
-* {
+*, *::before, *::after {
     box-sizing: border-box;
+    margin: 0;
+/*    FIXME: - might be dangerous */
 }
 
 a {
