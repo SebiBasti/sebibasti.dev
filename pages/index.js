@@ -1,21 +1,21 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout';
+import Layout, {siteTitle} from '../components/layout';
 import utilStyles from '../styles/utils.module.css'
 
-export async function getStaticProps() {
+export async function authenticateRequest() {
   const email = process.env.API_EMAIL;
   const password = process.env.API_PASSWORD;
+  const url = `https://sebibasti-blog-api.herokuapp.com/auth/login?email=${email}&password=${password}`
 
-  const resToken = await fetch(`https://sebibasti-blog-api.herokuapp.com/auth/login?email=${email}&password=${password}`, {
+  const resToken = await fetch(url, {
     method: 'post'
   });
 
-  const token = await resToken.json();
+  return await resToken.json();
+}
 
-  console.log('Check token:');
-  console.log(token['auth_token']);
-
-  const resData = await fetch('https://sebibasti-blog-api.herokuapp.com/posts', {
+export async function getData(url, token) {
+  const resData = await fetch(url, {
     method: 'get',
     headers: new Headers({
       'Authorization': token['auth_token'],
@@ -23,7 +23,7 @@ export async function getStaticProps() {
     })
   });
 
-  const blogData = await resData.json()
+  const blogData = await resData.json();
 
   if (!blogData) {
     return {
@@ -31,8 +31,31 @@ export async function getStaticProps() {
     }
   }
 
-  console.log('Check data:');
-  console.log(blogData);
+  return await blogData;
+}
+
+export async function getAllPostIds({ blogData }) {
+  return await blogData.data.map(obj => {
+    return {
+      params: {
+        id: obj.attributes.title.replace(/\s/g, '-').replace(/[?]/g, ''),
+        originId: obj.id // include original id for API request
+      }
+    }
+  });
+}
+
+export async function getStaticProps() {
+  const token = await authenticateRequest();
+
+  // console.log('Check token:');
+  // console.log(token['auth_token']);
+
+  const url = 'https://sebibasti-blog-api.herokuapp.com/posts'
+  const blogData = await getData(url, token);
+
+  // console.log('Check data:');
+  // console.log(blogData);
 
   return {
     props: { blogData }
