@@ -1,0 +1,46 @@
+.top {
+  display: flex;
+}
+
+.picture-container {
+  margin: 0 3em;
+  max-width: 30%;
+
+  .picture {
+    border-radius: 50%;
+    animation: fadeInAnimation ease 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    margin-left: 3em;
+  }
+}
+
+.top-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: hsla(0, 0%, 96%, 1);
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.references-container {
+  display: flex;
+  width: 100%;
+
+  .references-picture-container {
+    margin: 0 3em;
+    max-width: 30%;
+
+    .references-picture {
+
+    }
+  }
+}

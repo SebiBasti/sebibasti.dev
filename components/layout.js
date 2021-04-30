@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
+import styles from '../styles/layout.module.scss'
+import utilStyles from '../styles/utils.module.scss'
 import Link from 'next/link'
 import Navbar from './navbar'
 
 const name = 'Sebastian'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Sebastian Remm - Fullstack Web Developer'
 
 export default function Layout({ children, home }) {
   return (
@@ -14,10 +14,11 @@ export default function Layout({ children, home }) {
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
+          name="Sebastian Remm - Fullstack Web Developer"
+          content="Useful information about myself"
         />
         <meta
+          /* TODO: - implement own image */
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
             siteTitle
@@ -28,13 +29,6 @@ export default function Layout({ children, home }) {
       </Head>
       <Navbar/>
       <main className={styles.content}>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
     </div>
   )
 }

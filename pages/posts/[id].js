@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Layout from '../../components/layout'
 import Date from '../../components/date'
 import { authenticateRequest, getData, getAllPostIds } from '../index'
-import utilStyles from '../../styles/utils.module.css'
+import utilStyles from '../../styles/utils.module.scss'
 
 export async function getStaticPaths() {
   const token = await authenticateRequest();

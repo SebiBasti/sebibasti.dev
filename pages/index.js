@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Layout, {siteTitle} from '../components/layout';
-import utilStyles from '../styles/utils.module.css'
+import utilStyles from '../styles/utils.module.scss'
+import Image from 'next/image'
+import home from '../styles/home.module.scss'
 
 export async function authenticateRequest() {
   const email = process.env.API_EMAIL;
@@ -61,13 +63,33 @@ export default function Home({ blogData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>Ey guuuuude!</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
+      <section className={home.top}>
+        <div className={home["picture-container"]}>
+          <Image
+            src="/images/profile.jpeg"
+            alt="Profile picture Sebastian Remm"
+            className={home.picture}
+            width={500}
+            height={500}
+          />
+        </div>
+        <span className={home["top-content"]}>
+          Welcome to my super awesome website.
+        </span>
       </section>
+
+      <section className={home["references-container"]}>
+        <div className={home["references-picture-container"]}>
+          <Image
+            src="/images/references_placeholder.png"
+            alt="references placeholder"
+            className={home["references-picture"]}
+            width={200}
+            height={500}
+          />
+        </div>
+      </section>
+
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
