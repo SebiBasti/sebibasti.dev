@@ -1,0 +1,64 @@
+.container {
+  --typewriter-speed: 2s;
+  --typewriter-steps: 13;
+
+  font-family: 'Courier Prime', monospace;
+  position: relative;
+  height: 100%;
+  display: none;
+  align-items: center;
+  margin: 0 auto;
+
+  a {
+    width: 150px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    height: max-content;
+    flex-shrink: 0;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    &:before {
+      background: hsla(0, 0%, 7%, 1);
+      animation: typewriter var(--typewriter-speed) steps(var(--typewriter-steps)) 2s forwards;
+    }
+
+    &:after {
+      width: .125em;
+      height: 1.2rem;
+      top: 0.82rem;
+      background: transparent;
+      animation:
+              typewriter var(--typewriter-speed) steps(var(--typewriter-steps)) 2s forwards,
+              blink 380ms steps(var(--typewriter-steps)) 1s 10;
+    }
+  }
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: white;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .container {
+    display: flex;
+    grid-column: 2 / 3; // position in Navbar grid -> navbar.module.scss
+  }
+}

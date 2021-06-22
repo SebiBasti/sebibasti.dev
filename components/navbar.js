@@ -1,10 +1,11 @@
 import navbar from '../styles/navbar.module.scss'
 import Link from 'next/link'
+import Logo from '../components/logo'
 
 export default function Navbar() {
   return (
     <header className={navbar.container}>
-      <h1 className={navbar.logo}>Logo</h1>
+      <Logo/>
       <input type="checkbox" id="nav-toggle" className={navbar.toggle}/>
       <nav className={navbar.nav}>
         <ul>
