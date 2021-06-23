@@ -11,7 +11,7 @@
 
   a {
     width: 150px;
-    color: white;
+    color: var(--white);
     text-decoration: none;
     font-size: 1.2rem;
     text-transform: uppercase;
@@ -52,7 +52,7 @@
 
 @keyframes blink {
   to {
-    background: white;
+    background: var(--white);
   }
 }
 

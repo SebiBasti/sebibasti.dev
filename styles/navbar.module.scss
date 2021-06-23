@@ -1,11 +1,11 @@
 .container {
-  background: hsla(0, 0%, 7%, 1);
+  background: var(--black);
   text-align: center;
   position: fixed;
   top: 0;
   z-index: 999;
   width: 100%;
-  border-bottom: 2px solid hsla(360, 0%, 50%, 1);
+  border-bottom: 2px solid var(--grey);
   height: 52px;
   font-family: 'Courier Prime', monospace;
 }
@@ -15,7 +15,7 @@
 }
 
 .toggle-label {
-  color: hsla(360, 100%, 100%, 1);
+  color: var(--white);
   position: absolute;
   top: 0;
   left: 0;
@@ -27,7 +27,7 @@
 
   span, span::before, span::after {
     display: block;
-    background: hsla(360, 100%, 100%, 1);
+    background: var(--white);
     height: 2px;
     width: 2em;
     border-radius: 2px;
@@ -53,8 +53,9 @@
   text-align: left;
   top: 100%;
   left: 0;
-  background: hsla(0, 0%, 0%, 1);
+  background: var(--black);
   width: 100%;
+  border-bottom: 2px solid var(--grey);
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 400ms ease-in-out;
@@ -79,7 +80,7 @@
     transition: opacity 150ms ease-in-out;
 
     &:hover {
-      color: hsla(360, 0%, 50%, 1);
+      color: var(--grey);
     }
   }
 }
@@ -128,7 +129,7 @@
         content: '';
         display: block;
         height: 2px;
-        background: hsla(360, 0%, 50%, 1);
+        background: var(--grey);
         position: absolute;
         top: -0.15em;
         left: 0;

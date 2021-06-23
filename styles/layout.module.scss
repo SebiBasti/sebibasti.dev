@@ -1,9 +1,8 @@
 .content {
     width: 100%;
-    min-height: calc(100vh - 12rem);
+    min-height: calc(100vh - 52px);
     max-width: min(1000px, calc(100% - 4rem));
-    padding: 24px; // TODO: change to rem
     margin: 52px auto 0;
-    border-left: 2px solid hsla(360, 0%, 50%, 1);
-    border-right: 2px solid hsla(360, 0%, 50%, 1);
+    border-left: 2px solid var(--grey);
+    border-right: 2px solid var(--grey);
 }
