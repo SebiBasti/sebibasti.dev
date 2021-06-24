@@ -9,9 +9,6 @@ export default function Home() {
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet" />
       </Head>
       <section className={home['top-container']}>
         <div className={home['picture-container']}>
@@ -27,7 +24,7 @@ export default function Home() {
           />
         </div>
         <span className={home['top-description']}>
-
+          Hi, my name is Sebastian and I like coding and the web. This is my digital play&shy;ground and the place where I show my work.
         </span>
       </section>
     </Layout>

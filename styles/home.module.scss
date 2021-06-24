@@ -1,18 +1,18 @@
 .top-container {
   width: 100%;
   border-bottom: 2px solid var(--grey);
-  padding: 5%;
-  display: flex;
+  padding: 2rem;
 }
 
 .picture-container {
-  width: 30%;
+  width: 100%;
   height: auto;
 
   .picture {
     border-radius: 50%;
     border: 2px solid var(--grey);
     filter: grayscale(100%);
+    transition: 0.2s filter;
 
     &:hover {
       filter: none;
@@ -22,5 +22,17 @@
 }
 
 .top-description {
+  //width: 70%;
+  display: flex;
+  padding: 5%;
+  text-align: justify;
+  hyphens: manual;
+  font-size: min(calc(12px + 1vw), 24px);
+  align-items: center;
+}
 
+@media screen and (min-width: 750px) {
+  .top-container {
+    display: flex;
+  }
 }

@@ -15,17 +15,22 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/about">
               <a>about me</a>
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/blog">
               <a>blog</a>
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/cv">
+              <a>cv</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact">
               <a>contact</a>
             </Link>
           </li>
