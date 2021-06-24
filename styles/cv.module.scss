@@ -1,4 +1,5 @@
 .iframe {
-  height: calc(100vh - 52px);
+  height: calc(100vh - 104px);
   display: block;
+  border-bottom: 2px solid var(--grey);
 }
