@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Layout, {siteTitle} from '../components/layout';
 import utilStyles from '../styles/utils.module.scss'
 import Image from 'next/image'
+import profilePicture from '../public/images/profile.jpeg'
 import home from '../styles/home.module.scss'
 
 export default function Home() {
@@ -13,11 +14,9 @@ export default function Home() {
       <section className={home['top-container']}>
         <div className={home['picture-container']}>
           <Image
-            src="/images/profile.jpg"
+            src={profilePicture}
             alt="Profile picture Sebastian Remm"
             className={home.picture}
-            width="30%"
-            height="auto"
             layout="responsive"
             priority="true"
             placeholder="blur"

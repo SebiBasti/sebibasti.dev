@@ -7,27 +7,27 @@
 .picture-container {
   width: 100%;
   height: auto;
+  filter: grayscale(100%);
+  transition: 0.2s filter;
+  border-radius: 50%;
+  border: 2px solid var(--grey);
+
+  &:hover {
+    filter: none;
+    transition: 0.2s filter;
+  }
 
   .picture {
     border-radius: 50%;
-    border: 2px solid var(--grey);
-    filter: grayscale(100%);
-    transition: 0.2s filter;
-
-    &:hover {
-      filter: none;
-      transition: 0.2s filter;
-    }
   }
 }
 
 .top-description {
-  //width: 70%;
   display: flex;
-  padding: 5%;
+  padding: 4%;
   text-align: justify;
   hyphens: manual;
-  font-size: min(calc(12px + 1vw), 24px);
+  font-size: min(calc(11px + 1vw), 24px);
   align-items: center;
 }
 

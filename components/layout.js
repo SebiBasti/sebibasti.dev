@@ -1,21 +1,9 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Script from 'next/script'
 import styles from '../styles/layout.module.scss'
-import utilStyles from '../styles/utils.module.scss'
-import Link from 'next/link'
-import Navbar from './navbar'
 
 const name = 'Sebastian'
 export const siteTitle = 'Sebastian Remm - Fullstack Web Developer'
-
-
-// Monkey patch for height adjustment
-if (typeof document != 'undefined') {
-  const heightAdjust = (document.documentElement.clientHeight - 52).toString() + 'px'
-  const mainNode = document.getElementsByTagName('main')[0]
-  mainNode.style.minHeight = heightAdjust;
-}
-
 
 export default function Layout({ children, home }) {
   return (
@@ -26,6 +14,7 @@ export default function Layout({ children, home }) {
           name="Sebastian Remm - Fullstack Web Developer"
           content="Useful information about myself"
         />
+        <script>0</script>
         <meta
           /* TODO: - implement own image */
           property="og:image"
@@ -37,6 +26,15 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <main className={styles.content}>{children}</main>
+
+      {/*monkey patch for mobile height adjustment*/}
+      <Script>
+        {`
+          const heightAdjust = (document.documentElement.clientHeight - 52).toString() + 'px'
+          const mainNode = document.getElementsByTagName('main')[0]
+          mainNode.style.minHeight = heightAdjust
+        `}
+      </Script>
     </>
   )
 }
