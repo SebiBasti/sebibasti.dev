@@ -30,9 +30,12 @@ export default function Layout({ children, home }) {
       {/*monkey patch for mobile height adjustment*/}
       <Script>
         {`
-          let heightAdjust = (document.documentElement.clientHeight - 52).toString() + 'px'
-          let mainContainer = document.getElementsByTagName('main')[0]
-          mainContainer.style.minHeight = heightAdjust
+          if (document.readyState !== 'loading') {
+            console.log('Deine Mudda')
+            let heightAdjust = (document.documentElement.clientHeight - 52).toString() + 'px'
+            let mainContainer = document.getElementsByTagName('main')[0]
+            mainContainer.style.minHeight = heightAdjust
+          }
         `}
       </Script>
     </>
