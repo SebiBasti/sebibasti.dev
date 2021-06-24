@@ -31,8 +31,8 @@ export default function Layout({ children, home }) {
       <Script>
         {`
           const heightAdjust = (document.documentElement.clientHeight - 52).toString() + 'px'
-          const mainNode = document.getElementsByTagName('main')[0]
-          mainNode.style.minHeight = heightAdjust
+          const mainContainer = document.getElementsByTagName('main')[0]
+          mainContainer.style.minHeight = heightAdjust
         `}
       </Script>
     </>
