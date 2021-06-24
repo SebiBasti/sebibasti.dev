@@ -8,9 +8,18 @@ import Navbar from './navbar'
 const name = 'Sebastian'
 export const siteTitle = 'Sebastian Remm - Fullstack Web Developer'
 
+
+// Monkey patch for height adjustment
+if (typeof document != 'undefined') {
+  const heightAdjust = (document.documentElement.clientHeight - 52).toString() + 'px'
+  const mainNode = document.getElementsByTagName('main')[0]
+  mainNode.style.minHeight = heightAdjust;
+}
+
+
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -28,6 +37,6 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <main className={styles.content}>{children}</main>
-    </div>
+    </>
   )
 }

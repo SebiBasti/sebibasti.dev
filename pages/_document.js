@@ -1,9 +1,9 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
+  static async getInitialProps({ renderPage}) {
+    // const initialProps = await Document.getInitialProps(ctx)
+    return renderPage()
   }
 
   render() {
@@ -15,8 +15,8 @@ class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet" />
         </Head>
         <body>
-        <Main />
-        <NextScript />
+          <Main />
+          <NextScript />
         </body>
       </Html>
     )
