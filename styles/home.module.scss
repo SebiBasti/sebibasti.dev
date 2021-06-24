@@ -5,8 +5,7 @@
 }
 
 .picture-container {
-  width: 100%;
-  height: auto;
+  height: max-content;
   filter: grayscale(100%);
   transition: 0.2s filter;
   border-radius: 50%;
@@ -24,15 +23,26 @@
 
 .top-description {
   display: flex;
-  padding: 4%;
+  padding: 4% 0;
   text-align: justify;
   hyphens: manual;
   font-size: min(calc(11px + 1vw), 24px);
   align-items: center;
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 500px) {
   .top-container {
     display: flex;
+    align-items: center;
+  }
+
+  .picture-container {
+    width: 30%;
+    min-width: 150px;
+  }
+
+  .top-description {
+    padding: 4%;
+    width: 70%;
   }
 }
