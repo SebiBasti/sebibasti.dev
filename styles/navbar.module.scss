@@ -50,10 +50,14 @@
 .toggle-label-arrow {
   position: absolute;
   bottom: -.2em;
-  left: calc(50% - .6em);
-  right: calc(50% + .6em);
+  left: calc(50% - 10vw);
+  right: calc(50% + 10vw);
   cursor: pointer;
-  background: red;
+  width: 20vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: end;
 
   span {
     display: block;
