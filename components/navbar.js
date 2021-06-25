@@ -35,6 +35,9 @@ export default function Navbar() {
             </Link>
           </li>
         </ul>
+        <label htmlFor="nav-toggle" className={navbar['toggle-label-arrow']}>
+          <span/>
+        </label>
       </nav>
       <label htmlFor="nav-toggle" className={navbar['toggle-label']}>
         <span/>

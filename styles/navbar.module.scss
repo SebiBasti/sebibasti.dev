@@ -47,6 +47,25 @@
   }
 }
 
+.toggle-label-arrow {
+  position: absolute;
+  bottom: -.2em;
+  left: calc(50% - .6em);
+  right: calc(50% + .6em);
+  cursor: pointer;
+  background: red;
+
+  span {
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    border-right: .2em solid var(--white);
+    border-top: .2em solid var(--white);
+    transform: rotate(315deg);
+    position: relative;
+  }
+}
+
 .nav {
   position: absolute;
   text-align: left;
