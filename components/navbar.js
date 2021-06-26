@@ -10,11 +10,6 @@ export default function Navbar() {
       <nav className={navbar.nav}>
         <ul>
           <li>
-            <Link href="/">
-              <a>home</a>
-            </Link>
-          </li>
-          <li>
             <Link href="/about">
               <a>about me</a>
             </Link>

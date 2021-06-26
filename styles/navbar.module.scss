@@ -54,10 +54,10 @@
   right: calc(50% + 10vw);
   cursor: pointer;
   width: 20vw;
-  height: 10vh;
+  height: calc(1em + 30px);
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
 
   span {
     display: block;
@@ -89,8 +89,8 @@
   }
 
   li {
-    margin-bottom: 1em;
-    margin-left: 1em;
+    margin-bottom: .5em;
+    margin-left: .5em;
   }
 
   a {
@@ -99,6 +99,8 @@
     font-size: 1.2rem;
     text-transform: uppercase;
     opacity: 0;
+    padding: .5em;
+    white-space: nowrap;
     transition: opacity 150ms ease-in-out;
 
     &:hover {
@@ -118,6 +120,10 @@
 
 @media screen and (min-width: 750px) {
   .toggle-label {
+    display: none;
+  }
+
+  .toggle-label-arrow {
     display: none;
   }
 
