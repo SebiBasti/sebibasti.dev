@@ -49,20 +49,24 @@
 
 .toggle-label-arrow {
   position: absolute;
-  bottom: -.2em;
-  left: calc(50% - 10vw);
-  right: calc(50% + 10vw);
+  bottom: -36px;
+  left: calc(50% - 32px);
+  right: calc(50% + 32px);
   cursor: pointer;
-  width: 20vw;
-  height: calc(1em + 30px);
+  width: 64px;
+  height: 32px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  background: var(--black);
+  border: 2px solid var(--grey);
+  border-top: 1px solid var(--grey);
+  transform: perspective(12px) rotateX(-8deg);
 
   span {
     display: block;
-    width: 1.2em;
-    height: 1.2em;
+    width: 20px;
+    height: 20px;
     border-right: .2em solid var(--white);
     border-top: .2em solid var(--white);
     transform: rotate(315deg);
@@ -89,17 +93,18 @@
   }
 
   li {
-    margin-bottom: .5em;
-    margin-left: .5em;
+    box-shadow: 0 -2px 0 var(--light-black);
   }
 
   a {
+    display: block;
     color: var(--white);
     text-decoration: none;
     font-size: 1.2rem;
     text-transform: uppercase;
     opacity: 0;
-    padding: .5em;
+    margin-left: .5em;
+    padding: 0.5em .3em;
     white-space: nowrap;
     transition: opacity 150ms ease-in-out;
 
@@ -146,12 +151,14 @@
 
     li {
       margin-left: 3em;
-      margin-bottom: 0;
+      box-shadow: none;
     }
 
     a {
+      display: unset;
       opacity: 1;
       position: relative;
+      box-shadow: none;
 
       &:before {
         content: '';
