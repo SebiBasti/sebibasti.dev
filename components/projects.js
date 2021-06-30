@@ -22,7 +22,7 @@ export default function Projects() {
                 src={ picture }
                 alt={ picture.alt }
                 className={ projects.picture }
-                placeholder="blur"
+                layout="responsive"
               />
             </a>
           )
