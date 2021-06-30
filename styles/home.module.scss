@@ -1,18 +1,10 @@
 .picture-container {
   position: relative;
-  width: 30%;
   filter: grayscale(100%);
-  padding: 1px;
+  line-height: 0;
   border-radius: 50%;
   box-shadow: 2px 2px 8px var(--black);
   transition: filter .4s ease-out;
-
-  // source: https://spin.atomicobject.com/2015/07/14/css-responsive-square/
-  &:after {
-    content: '';
-    display: block;
-    padding-bottom: 100%;
-  }
 
   &:hover {
     filter: none;
@@ -26,7 +18,7 @@
 
 .top-description {
   display: flex;
-  padding: 4% 0;
+  margin-top: 2rem;
   text-align: justify;
   hyphens: manual;
   font-size: min(calc(11px + 1vw), 24px);
@@ -45,7 +37,7 @@
   }
 
   .top-description {
-    padding: 4%;
+    margin: 0 0 0 2rem;
     width: 70%;
   }
 }

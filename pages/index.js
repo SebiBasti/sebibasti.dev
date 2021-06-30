@@ -18,7 +18,6 @@ export default function Home() {
             src={profilePicture}
             alt="Profile picture Sebastian Remm"
             className={home.picture}
-            layout="fill"
             priority="true"
             placeholder="blur"
           />

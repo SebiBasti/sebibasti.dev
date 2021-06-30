@@ -107,10 +107,6 @@
     padding: 0.5em .3em;
     white-space: nowrap;
     transition: opacity 150ms ease-in-out;
-
-    &:hover {
-      color: var(--grey);
-    }
   }
 }
 
@@ -176,6 +172,18 @@
 
       &:hover::before {
         transform: scale(1, 1);
+      }
+    }
+  }
+}
+
+@media ( hover: hover ) {
+  .nav {
+
+    a {
+
+      &:hover {
+        color: var(--grey);
       }
     }
   }

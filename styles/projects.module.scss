@@ -1,19 +1,17 @@
 .picture-container {
   display: block;
   position: relative;
-  height: auto;
-  width: 100%;
-  margin: .6rem;
+  line-height:  0;
+  margin: 5% 0;
   border-radius: 2px;
   box-shadow: 2px 2px 8px var(--black);
-  opacity: 98%;
-  transition: opacity .4s ease-out;
 
-  // source: https://spin.atomicobject.com/2015/07/14/css-responsive-square/
-  &:before {
-    content: '';
-    display: block;
-    padding-top: 100%;
+  &:first-child {
+    margin: 0;
+  }
+
+  &:last-child {
+    margin: 0;
   }
 
   &:after {
@@ -23,45 +21,68 @@
     bottom: 0;
     width: 100%;
     height: auto;
+    padding: .2em .4rem 0 .4rem;
+    line-height: 1.6;
     background: var(--light-black);
     color: var(--white);
-    --font-calc: calc(16px + (20 - 16) * ((100vw - 500px) / (1000 - 500)));
-    font-size: clamp(16px, var(--font-calc), 20px);
+    --font-calc: calc(14px + (24 - 14) * ((100vw - 320px) / (750 - 320)));
+    font-size: clamp(14px, var(--font-calc), 24px);
     text-transform: uppercase;
     text-align: center;
-    transition: transform .4s, box-shadow .4s;
-    transform-origin: top;
-  }
-
-  div {
-    overflow: visible !important;
-  }
-
-  &:hover {
-    transition: opacity .4s ease-out;
-    opacity: 100%;
-
-    &:after {
-      transform: scaleX(1.05) scaleY(1.25);
-      transform-origin: top;
-      box-shadow: 2px 2px 8px var(--black);
-      transition: transform .4s, box-shadow .4s;
-    }
   }
 
   .picture {
     border-radius: 2px;
-    transition: transform .4s;
+  }
+}
 
-    &:hover {
-      transform: scale(1.05);
-      transition: transform .4s;
+@media screen and (min-width: 750px) {
+  .picture-container {
+    width: 100%;
+    margin: 0 2%;
+
+    &:after {
+      --font-calc: calc(14px + (20 - 14) * ((100vw - 750px) / (1000 - 750)));
+      font-size: clamp(14px, var(--font-calc), 20px);
     }
   }
 }
 
-@media ( hover: none ) {
+@media ( hover: hover ) {
   .picture-container {
+    opacity: 98%;
+    transition: opacity .4s ease-out;
 
+    &:after {
+      opacity: 0;
+      transform-origin: top;
+      transition: transform .4s, box-shadow .4s, opacity .4s;
+    }
+
+    div {
+      overflow: visible !important;
+    }
+
+    &:hover {
+      transition: opacity .4s ease-out;
+      opacity: 100%;
+
+      &:after {
+        transform: scaleX(1.06) scaleY(1.25);
+        transform-origin: top;
+        box-shadow: 2px 2px 8px var(--black);
+        opacity: 100%;
+        transition: transform .4s, box-shadow .4s, opacity .4s;
+      }
+    }
+
+    .picture {
+      transition: transform .4s;
+
+      &:hover {
+        transform: scale(1.05);
+        transition: transform .4s;
+      }
+    }
   }
 }

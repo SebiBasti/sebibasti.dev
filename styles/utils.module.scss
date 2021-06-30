@@ -1,3 +1,10 @@
+.header {
+    margin: 2rem 2rem 0;
+    --font-calc: calc(20px + (28 - 20) * ((100vw - 320px) / (1000 - 320)));
+    font-size: clamp(20px, var(--font-calc), 28px);
+    line-height: 1;
+}
+
 .container-500 {
     width: 100%;
     border-bottom: 2px solid var(--grey);
@@ -22,4 +29,16 @@
         display: flex;
         align-items: center;
     }
+}
+
+.emulated-flex-gap {
+    --gap: 2%;
+    //display: inline-flex;
+    //flex-wrap: wrap;
+    margin: calc(-1 * var(--gap)) 0 0 calc(-1 * var(--gap));
+    width: calc(100% + var(--gap));
+}
+
+.emulated-flex-gap > * {
+    margin: var(--gap) 0 0 var(--gap);
 }
