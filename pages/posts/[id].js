@@ -53,3 +53,9 @@
 //     </Layout>
 //   )
 // }
+
+export default function Placeholder() {
+  return (
+    <></>
+  )
+}
