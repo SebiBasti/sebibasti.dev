@@ -18,7 +18,7 @@ export default function Home() {
             src={profilePicture}
             alt="Profile picture Sebastian Remm"
             className={home.picture}
-            layout="responsive"
+            layout="fill"
             priority="true"
             placeholder="blur"
           />
