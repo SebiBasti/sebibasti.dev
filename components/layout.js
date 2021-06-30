@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Script from 'next/script'
 import styles from '../styles/layout.module.scss'
+import { resizeWindow } from "./utils/window_resize";
 
 const name = 'Sebastian'
 export const siteTitle = 'Sebastian Remm - Fullstack Web Developer'
@@ -25,18 +26,7 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <main className={styles.content}>{children}</main>
-
-      {/*monkey patch for mobile height adjustment*/}
-      <Script>
-        {`
-          if (document.readyState !== 'loading') {
-            let heightAdjust = (document.documentElement.clientHeight - 52).toString() + 'px'
-            let mainContainer = document.getElementsByTagName('main')[0]
-            mainContainer.style.minHeight = heightAdjust
-          }
-        `}
-      </Script>
+      <main className={styles.content} onLoad={ resizeWindow }>{children}</main>
     </>
   )
 }

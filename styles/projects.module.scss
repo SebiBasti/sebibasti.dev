@@ -1,0 +1,60 @@
+.picture-container {
+  display: block;
+  position: relative;
+  height: auto;
+  width: 100%;
+  margin: .6rem;
+  border-radius: 2px;
+  box-shadow: 2px 2px 8px var(--black);
+  opacity: 98%;
+  transition: opacity .4s ease-out;
+
+  &:after {
+    content: attr(data-description);
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    background: var(--light-black);
+    color: var(--white);
+    --font-calc: calc(16px + (20 - 16) * ((100vw - 500px) / (1000 - 500)));
+    font-size: clamp(16px, var(--font-calc), 20px);
+    text-transform: uppercase;
+    text-align: center;
+    transition: transform .4s, box-shadow .4s;
+    transform-origin: top;
+  }
+
+  div {
+    overflow: visible !important;
+  }
+
+  &:hover {
+    transition: opacity .4s ease-out;
+    opacity: 100%;
+
+    &:after {
+      transform: scaleX(1.05) scaleY(1.25);
+      transform-origin: top;
+      box-shadow: 2px 2px 8px var(--black);
+      transition: transform .4s, box-shadow .4s;
+    }
+  }
+
+  .picture {
+    border-radius: 2px;
+    transition: transform .4s;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: transform .4s;
+    }
+  }
+}
+
+@media ( hover: none ) {
+  .picture-container {
+
+  }
+}

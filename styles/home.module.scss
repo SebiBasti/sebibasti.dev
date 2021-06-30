@@ -1,19 +1,14 @@
-.top-container {
-  width: 100%;
-  border-bottom: 2px solid var(--grey);
-  padding: 2rem;
-}
-
 .picture-container {
   height: max-content;
   filter: grayscale(100%);
-  transition: 0.2s filter;
+  padding: 1px;
   border-radius: 50%;
-  border: 2px solid var(--grey);
+  box-shadow: 2px 2px 8px var(--black);
+  transition: filter .4s ease-out;
 
   &:hover {
     filter: none;
-    transition: 0.2s filter;
+    transition: filter .4s ease-out;
   }
 
   .picture {
