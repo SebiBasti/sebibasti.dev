@@ -18,6 +18,9 @@ export default function Home() {
             src={profilePicture}
             alt="Profile picture Sebastian Remm"
             className={home.picture}
+            width={ 270 }
+            height={ 270 }
+            layout="responsive"
             priority="true"
             placeholder="blur"
           />
