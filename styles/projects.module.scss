@@ -9,6 +9,13 @@
   opacity: 98%;
   transition: opacity .4s ease-out;
 
+  // source: https://spin.atomicobject.com/2015/07/14/css-responsive-square/
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
   &:after {
     content: attr(data-description);
     display: block;

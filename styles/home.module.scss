@@ -1,10 +1,18 @@
 .picture-container {
-  height: max-content;
+  position: relative;
+  width: 30%;
   filter: grayscale(100%);
   padding: 1px;
   border-radius: 50%;
   box-shadow: 2px 2px 8px var(--black);
   transition: filter .4s ease-out;
+
+  // source: https://spin.atomicobject.com/2015/07/14/css-responsive-square/
+  &:after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
 
   &:hover {
     filter: none;
