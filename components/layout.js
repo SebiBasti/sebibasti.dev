@@ -1,12 +1,15 @@
 import Head from 'next/head'
-import Script from 'next/script'
 import styles from '../styles/layout.module.scss'
 import { resizeWindow } from "./utils/window_resize";
+import { useEffect } from "react";
 
 const name = 'Sebastian'
 export const siteTitle = 'Sebastian Remm - Fullstack Web Developer'
 
-export default function Layout({ children, home }) {
+export default function Layout( { children, home } ) {
+  useEffect( () => {
+    resizeWindow()
+  } )
   return (
     <>
       <Head>
@@ -26,7 +29,7 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <main className={styles.content} onLoad={ resizeWindow }>{children}</main>
+      <main className={ styles.content }>{ children }</main>
     </>
   )
 }
