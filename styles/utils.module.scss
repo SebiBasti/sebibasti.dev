@@ -5,6 +5,12 @@
     line-height: 1;
 }
 
+.container {
+    width: 100%;
+    border-bottom: 2px solid var(--grey);
+    padding: 2rem;
+}
+
 .container-500 {
     width: 100%;
     border-bottom: 2px solid var(--grey);

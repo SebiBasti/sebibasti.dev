@@ -23,3 +23,5 @@ export function getStaticProps() {
     }
   }
 }
+
+// TODO: replace with https://github.com/mozilla/pdf.js
