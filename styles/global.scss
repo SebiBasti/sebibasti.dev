@@ -8,6 +8,7 @@ body {
     box-sizing: border-box;
     background: var(--light-black);
     color: var(--white);
+    -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
 }
 
 *, *::before, *::after {
