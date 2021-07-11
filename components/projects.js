@@ -24,6 +24,7 @@ export default function Projects() {
                 className={ projects.picture }
                 layout="responsive"
               />
+              <p className={ utilStyles[ 'sr-only' ] }>{ picture.description }</p>
             </a>
           )
         } ) }

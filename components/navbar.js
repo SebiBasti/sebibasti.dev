@@ -25,7 +25,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/impressum">
+            <Link href="/imprint">
               <a>imprint</a>
             </Link>
           </li>
