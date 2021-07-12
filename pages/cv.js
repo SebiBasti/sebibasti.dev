@@ -5,7 +5,7 @@ export default function Cv( { timestamp } ) {
   return (
     <Layout cv>
       <iframe
-        src={ `https://drive.google.com/viewerng/viewer?embedded=true&url=sebibasti-dev.vercel.app/documents/cv_sebastian_remm.pdf?${ timestamp }` }
+        src={ `https://drive.google.com/viewerng/viewer?embedded=true&url=sebibasti.dev/documents/cv_sebastian_remm.pdf?${ timestamp }` }
         className={ cv.iframe }
         frameBorder="0"
         width="100%"
