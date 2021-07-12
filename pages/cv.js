@@ -1,27 +1,17 @@
 import Layout from '../components/layout'
-import cv from '../styles/cv.module.scss'
+import dynamic from "next/dynamic"
+import cv from "../styles/cv.module.scss";
 
-export default function Cv( { timestamp } ) {
+const PDFViewer = dynamic(() => import("../components/pdf_viewer"), {
+  ssr: false
+});
+
+export default function Cv() {
   return (
     <Layout cv>
-      <iframe
-        src={ `https://drive.google.com/viewerng/viewer?embedded=true&url=sebibasti.dev/documents/cv_sebastian_remm.pdf?${ timestamp }` }
-        className={ cv.iframe }
-        frameBorder="0"
-        width="100%"
-        height="100%"
-      />
+      <PDFViewer url={ './documents/cv_sebastian_remm.pdf' } extLink={ 'https://sebibasti.github.io/' }/>
     </Layout>
-  )
-}
-
-export function getStaticProps() {
-  const timestamp = 'timestamp=' + Date.now()
-  return {
-    props: {
-      timestamp
-    }
-  }
+  );
 }
 
 // TODO: replace with https://github.com/mozilla/pdf.js
