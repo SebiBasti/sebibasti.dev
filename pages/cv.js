@@ -1,6 +1,5 @@
 import Layout from '../components/layout'
 import dynamic from "next/dynamic"
-import cv from "../styles/cv.module.scss";
 
 const PDFViewer = dynamic(() => import("../components/pdf_viewer"), {
   ssr: false
@@ -13,5 +12,3 @@ export default function Cv() {
     </Layout>
   );
 }
-
-// TODO: replace with https://github.com/mozilla/pdf.js

@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { SizeMe } from 'react-sizeme'
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css'
-import cv from '../styles/cv.module.scss'
+import pdf from '../styles/pdf.module.scss'
+import { pdfFullscreenToggle } from "./utils/pdf_fullscreen";
+
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
 
@@ -13,14 +15,25 @@ export default function PDFViewer( props ) {
     setNumPages( nextNumPages )
   }
 
+  let expandButton
+  if ( document.documentElement.clientWidth < 1000 ) {
+    expandButton = (
+      <div className={ pdf[ 'expand-container' ] } onClick={ pdfFullscreenToggle } >
+        <img src="/icons/expand-arrow-svgrepo-com.svg" alt="expand pdf icon"/>
+      </div>
+    )
+  } else {
+    expandButton = ( <></> )
+  }
+
   return (
     <SizeMe
       render={ ( { size } ) => (
         <Document
           file={ props.url }
           loading= {
-            <div className={ cv.container }>
-              <div className={ cv.loader }/>
+            <div className={ pdf.container }>
+              <div className={ pdf.loader }/>
               <p>Loading...</p>
               <a href={ props.extLink } target="_blank" rel="noopener noreferrer">
                 link to file
@@ -29,7 +42,7 @@ export default function PDFViewer( props ) {
           }
           onLoadSuccess={ onDocumentLoadSuccess }
           error= {
-            <div className={ cv.container }>
+            <div className={ pdf.container }>
               <p>An error occurred!</p>
               <a href={ props.extLink } target="_blank" rel="noopener noreferrer">
                 link to file
@@ -42,9 +55,9 @@ export default function PDFViewer( props ) {
               width={ size.width ? size.width : 1 }
               key={ `page_${ index + 1 }` }
               pageNumber={ index + 1 }
-              className={ cv.page }
+              className={ pdf.page }
               error= {
-                <div className={ cv.container }>
+                <div className={ pdf.container }>
                   <p>An error occurred!</p>
                   <a href={ props.extLink } target="_blank" rel="noopener noreferrer">
                     link to file
@@ -55,9 +68,7 @@ export default function PDFViewer( props ) {
               renderTextLayer={ true }
             />
           ))}
-          {/*<a href="https://sebibasti.github.io/" className={ cv.expand } target="_blank" rel="noopener noreferrer">*/}
-          {/*  <img src="/icons/expand-arrow-svgrepo-com.svg" alt="expand pdf icon"/>*/}
-          {/*</a>*/}
+          { expandButton }
         </Document>
       )}
     />
