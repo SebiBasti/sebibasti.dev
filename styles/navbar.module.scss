@@ -131,7 +131,7 @@
   .container {
     display: grid;
     grid-template-columns: 1fr auto min(850px, calc(100% - 150px)) 1fr;
-    padding: 0 2rem;
+    padding: 0 2rem 0 calc(2rem + 100vw - 100%); // fix for scrollbar jumps
   }
 
   .nav {

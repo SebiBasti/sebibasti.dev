@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/layout.module.scss'
-import { resizeWindow } from "./utils/window_resize";
-import { useEffect } from "react";
+import { resizeWindow } from "./utils/window_resize"
+import { useEffect } from "react"
 
 const name = 'Sebastian'
 export const siteTitle = 'Sebastian Remm - Fullstack Web Developer'
@@ -10,6 +10,7 @@ export default function Layout( { children, home } ) {
   useEffect( () => {
     resizeWindow()
   } )
+
   return (
     <>
       <Head>
