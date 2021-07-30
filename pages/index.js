@@ -9,9 +9,6 @@ import home from '../styles/home.module.scss'
 export default function Home() {
   return (
     <Layout home>
-      <Head>
-        <title>{ siteTitle }</title>
-      </Head>
       <section className={ utilStyles[ 'container-500' ] }>
         <div className={ home[ 'picture-container' ] }>
           <Image
