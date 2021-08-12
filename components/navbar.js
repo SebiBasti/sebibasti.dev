@@ -10,8 +10,8 @@ export default function Navbar() {
       <nav className={navbar.nav}>
         <ul>
           <li>
-            <Link href="https://www.linkedin.com/in/sebastian-remm/">
-              <a target="_blank" rel="noreferrer">linkedin</a>
+            <Link href="https://www.codewars.com/users/SebiBasti/">
+              <a target="_blank" rel="noreferrer">codewars</a>
             </Link>
           </li>
           <li>
