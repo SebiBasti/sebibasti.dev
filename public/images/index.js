@@ -1,4 +1,4 @@
-import profilePicture from './profile.jpeg'
+import profilePicture from './profile.png'
 import projectPokedex from './project_pokedex.png'
 import projectBlogApi from './project_blog_api.png'
 
