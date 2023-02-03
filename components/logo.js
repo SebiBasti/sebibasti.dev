@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <div className={logo.container}>
       <Link href="/">
-        <a>SebiBasti.dev</a>
+        sebibasti.dev
       </Link>
     </div>
   )

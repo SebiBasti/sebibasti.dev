@@ -10,23 +10,23 @@ export default function Navbar() {
       <nav className={navbar.nav}>
         <ul>
           <li>
-            <Link href="https://www.codewars.com/users/SebiBasti/">
-              <a target="_blank" rel="noreferrer">codewars</a>
+            <Link href="https://www.codewars.com/users/SebiBasti/" target="_blank" rel="noreferrer">
+              codewars
             </Link>
           </li>
           <li>
-            <Link href="https://github.com/SebiBasti/">
-              <a target="_blank" rel="noreferrer">github</a>
+            <Link href="https://github.com/SebiBasti/" target="_blank" rel="noreferrer">
+              github
             </Link>
           </li>
           <li>
             <Link href="/cv">
-              <a>cv</a>
+              cv
             </Link>
           </li>
           <li>
             <Link href="/imprint">
-              <a>imprint</a>
+              imprint
             </Link>
           </li>
         </ul>

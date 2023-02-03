@@ -15,7 +15,6 @@ export default function Home() {
             src={ profilePicture }
             alt="Profile picture Sebastian Remm"
             className={ home.picture }
-            layout="responsive"
             priority="true"
           />
         </div>
