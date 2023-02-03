@@ -8,7 +8,10 @@ const PDFViewer = dynamic(() => import("../components/pdf_viewer"), {
 export default function Cv() {
   return (
     <Layout cv>
-      <PDFViewer url={ './documents/cv_sebastian_remm.pdf' } extLink={ 'https://sebibasti.github.io/' }/>
+      <PDFViewer
+        url={ './documents/cv_sebastian_remm.pdf' }
+        extLink={ 'https://www.sebibasti.dev/documents/cv_sebastian_remm.pdf' }
+      />
     </Layout>
   );
 }
