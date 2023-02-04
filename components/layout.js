@@ -4,7 +4,7 @@ import { useEffect } from "react"
 
 export default function Layout( { children, home } ) {
   useEffect( () => {
-    // resizeWindow()
+    resizeWindow()
   } )
 
   return (
