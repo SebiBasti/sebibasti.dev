@@ -5,7 +5,7 @@ import projectBlogApi from './project_blog_api.png'
 
 projectWandgestaltung.link = 'https://www.wandgestaltung-reinl.de/'
 projectWandgestaltung.alt = 'Wandgestaltung Reinl Picture'
-projectWandgestaltung.description = 'website build with Next.js'
+projectWandgestaltung.description = 'website build with Next.js & TypeScript'
 projectBlogApi.link = 'https://github.com/SebiBasti/blog-api'
 projectBlogApi.alt = 'picture project blog api'
 projectBlogApi.description = 'Blog API with unit tests'
