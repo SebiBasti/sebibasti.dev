@@ -40,7 +40,7 @@ export default function Imprint() {
           <a
             href="#"
             id="email"
-            data-email="c2ViYXN0aWFuLnJlbW1AZ21haWwuY29t"
+            data-email="c2ViYXN0aWFuLnJlbW0rc2ViaWJhc3RpZGV2QGdtYWlsLmNvbQ=="
             className={ imprint[ 'svg-container' ] }>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 18">
               <path fill="#f5f5f5" d={ svgCoords[ 'email' ] }/>
