@@ -31,3 +31,4 @@ yarn-error.log*
 
 .idea/*
 /env.local
+/next-env.d.ts
