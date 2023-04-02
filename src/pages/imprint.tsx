@@ -42,7 +42,7 @@ export default function Imprint() {
           className={imprint['svg-container']}
           onClick={() =>
             (window.location.href =
-              'tel:' +
+              'mailto:' +
               window.atob(
                 'c2ViYXN0aWFuLnJlbW0rc2ViaWJhc3RpZGV2QGdtYWlsLmNvbQ=='
               ))
