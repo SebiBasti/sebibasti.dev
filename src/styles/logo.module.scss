@@ -1,0 +1,88 @@
+.container {
+  --typewriter-speed: 2s;
+  --typewriter-steps: 13;
+  display: flex;
+
+  position: relative;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0.5em 0.3em;
+  width: max-content;
+  height: 100%;
+
+  &:before {
+    display: block;
+    position: absolute;
+    top: 0.3em;
+    right: 0;
+    left: 0;
+    transform: scale(0, 1);
+    transform-origin: left;
+    transition: transform ease-in-out 250ms;
+    background: var(--grey);
+    height: 2px;
+    content: '';
+  }
+
+  &:hover::before {
+    transform: scale(1, 1);
+  }
+
+  a {
+    flex-shrink: 0;
+    width: 150px;
+    height: max-content;
+    color: var(--white);
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      color: var(--grey);
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content: '';
+    }
+
+    &:before {
+      animation: typewriter var(--typewriter-speed)
+        steps(var(--typewriter-steps)) 2s forwards;
+      background: hsla(0, 0%, 7%, 1);
+    }
+
+    &:after {
+      top: 0.82rem;
+      animation: typewriter var(--typewriter-speed)
+          steps(var(--typewriter-steps)) 2s forwards,
+        blink 380ms steps(var(--typewriter-steps)) 1s 10;
+      background: transparent;
+      width: 0.125em;
+      height: 1.2rem;
+    }
+  }
+}
+
+@keyframes typewriter {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background: var(--white);
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .container {
+    grid-column: 2 / 3; // position in Navbar grid -> navbar.module.scss
+  }
+}

@@ -1,0 +1,9 @@
+.content {
+  margin: 52px auto 0;
+  border-right: 2px solid var(--grey);
+  border-left: 2px solid var(--grey);
+  padding-bottom: 50px;
+  width: 100%;
+  max-width: min(1000px, calc(100% - 4rem));
+  min-height: calc(100vh - 52px);
+}

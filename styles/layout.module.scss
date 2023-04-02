@@ -1,9 +1,0 @@
-.content {
-  width: 100%;
-  max-width: min(1000px, calc(100% - 4rem));
-  left: calc((100vw - 100%) / 2); // fix for scrollbar jumps
-  margin: 52px auto 0;
-  padding-bottom: 50px;
-  border-left: 2px solid var(--grey);
-  border-right: 2px solid var(--grey);
-}

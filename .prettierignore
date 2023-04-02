@@ -17,21 +17,25 @@
 
 # misc
 .DS_Store
+*.pem
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
 # local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*.local
 
-.idea/*
-.husky/*
-/env.local
-/next-env.d.ts
+# vercel
+.vercel
 
-/src/utils/text_to_svg.js
+# .idea files
+/.idea/jsLibraryMappings.xml
+/.idea/vcs.xml
+/.idea/inspectionProfiles/Project_Default.xml
+
+# Next.js typescript config file
+next-env.d.ts
+/.idea/codeStyles/codeStyleConfig.xml
