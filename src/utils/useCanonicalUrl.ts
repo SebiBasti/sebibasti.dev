@@ -1,10 +1,9 @@
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 
-export const useCanonicalUrl = () => {
+export const useCanonicalUrl = (url: string) => {
   const router = useRouter()
-  const canonicalUrl = (
-    `https://www.sebibasti.dev` + (router.asPath === '/' ? '' : router.asPath)
+  return (
+    url + (router.asPath === '/' ? '' : router.asPath)
   ).split('?')[0]
-  return canonicalUrl
 }
 // source: https://rishimohan.me/blog/nextjs-canonical-tag

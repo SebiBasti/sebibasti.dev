@@ -4,6 +4,7 @@ import { DefaultSeo } from 'next-seo'
 
 import { AppProps } from 'next/app'
 import { Courier_Prime } from 'next/font/google'
+import Head from 'next/head'
 
 import Navbar from '@/components/navbar'
 
@@ -16,13 +17,19 @@ import layout from '@/styles/layout.module.scss'
 const courierPrime = Courier_Prime({ weight: '400', subsets: ['latin'] })
 
 export default function App({ Component, pageProps }: AppProps) {
-  const canonicalUrl = useCanonicalUrl()
+  const canonicalUrl = useCanonicalUrl('https://www.sebibasti.dev')
   return (
-    <main className={`${courierPrime.className} ${layout.content}`}>
-      <DefaultSeo canonical={canonicalUrl} {...SEO} />
-      <Navbar />
-      <Component {...pageProps} />
-      <Analytics />
-    </main>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className={`${courierPrime.className} ${layout.content}`}>
+        <DefaultSeo canonical={canonicalUrl} {...SEO} />
+        <Navbar />
+        <Component {...pageProps} />
+        <Analytics />
+      </main>
+    </>
   )
 }
