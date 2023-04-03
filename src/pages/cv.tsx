@@ -6,12 +6,5 @@ const PDFViewer = dynamic(() => import('@/components/pdfViewer'), {
 })
 
 export default function Cv() {
-  return (
-    <>
-      <Head>
-        <link rel="canonical" href="https://www.sebibasti.dev" />
-      </Head>
-      <PDFViewer file={'./documents/cv_sebastian_remm.pdf'} />
-    </>
-  )
+  return <PDFViewer file={'./documents/cv_sebastian_remm.pdf'} />
 }

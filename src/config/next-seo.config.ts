@@ -2,7 +2,6 @@ export const SEO = {
   title: 'sebibasti.dev',
   description:
     'Hi, my name is Sebastian and I like coding and the web. This is my digital playground and the place where I show my work.',
-  canonical: 'https://www.sebibasti.dev/',
   openGraph: {
     type: 'website',
     locale: 'en_us',
