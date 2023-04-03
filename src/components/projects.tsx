@@ -27,6 +27,7 @@ export default function Projects() {
                   '(min-width: 750px) min(calc(50vw - 5rem), calc(500px - 5rem)), calc(100vw - 8rem)'
                 }
                 className={projects.picture}
+                priority
               />
               <p className={utilStyles['sr-only']}>{picture.description}</p>
             </a>
