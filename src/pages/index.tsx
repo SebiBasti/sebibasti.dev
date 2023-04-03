@@ -16,7 +16,7 @@ export default function Home() {
             alt="Profile picture Sebastian Remm"
             className={home.picture}
             sizes={
-              '(min-width: 500px) min(30vw - 4rem, 300px - 4rem), calc(100vw - 8rem)'
+              '(min-width: 500px) clamp(150px, calc(30vw - 4rem), calc(300px - 4rem)), calc(100vw - 8rem)'
             }
             priority
           />
