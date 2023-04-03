@@ -23,6 +23,9 @@ export default function Projects() {
               <Image
                 src={picture.src}
                 alt={picture.alt}
+                sizes={
+                  '(min-width: 750px) min(50vw - 5rem, 500px - 5rem), calc(100vw - 8rem)'
+                }
                 className={projects.picture}
               />
               <p className={utilStyles['sr-only']}>{picture.description}</p>
