@@ -4,7 +4,6 @@ import { DefaultSeo } from 'next-seo'
 
 import { AppProps } from 'next/app'
 import { Courier_Prime } from 'next/font/google'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import Navbar from '@/components/navbar'

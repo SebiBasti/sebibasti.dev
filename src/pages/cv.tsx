@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
 
 const PDFViewer = dynamic(() => import('@/components/pdfViewer'), {
   ssr: false
