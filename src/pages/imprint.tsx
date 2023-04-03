@@ -9,7 +9,7 @@ export default function Imprint() {
   return (
     <section className={`${utilStyles['container']} ${imprint.layout}`}>
       <h1>Imprint</h1>
-      <h3>Information according to §5 TMG / Angaben gemäß §5 TMG</h3>
+      <h2>Information according to §5 TMG / Angaben gemäß §5 TMG</h2>
       <p>
         Sebastian Remm
         <br />
@@ -24,6 +24,7 @@ export default function Imprint() {
         <p>Tel.:</p>
         <Link
           href={'#'}
+          aria-label="phone-number"
           className={imprint['svg-container']}
           onClick={() =>
             (window.location.href =
@@ -39,6 +40,7 @@ export default function Imprint() {
         <p>Email:</p>
         <a
           href={'#'}
+          aria-label="email"
           className={imprint['svg-container']}
           onClick={() =>
             (window.location.href =

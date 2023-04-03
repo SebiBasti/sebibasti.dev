@@ -6,7 +6,7 @@ import expandIcon from '~/icons/expand-arrow-svgrepo-com.svg'
 
 import Image from 'next/image'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { useWidth } from '@/utils'
 
@@ -34,7 +34,6 @@ export default function PDFViewer(props: DocumentProps) {
 
   return (
     <Document
-      renderMode={'svg'}
       inputRef={mainRef}
       file={props.file}
       className={`${pdf.document} ` + `${fullscreen ? pdf.fullscreen : ''}`}
@@ -57,6 +56,7 @@ export default function PDFViewer(props: DocumentProps) {
       }
     >
       <Page
+        renderMode={'svg'}
         width={width}
         key={`cv`}
         pageNumber={1}

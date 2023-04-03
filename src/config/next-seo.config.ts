@@ -1,4 +1,4 @@
-export default {
+export const SEO = {
   title: 'sebibasti.dev',
   description:
     'Hi, my name is Sebastian and I like coding and the web. This is my digital playground and the place where I show my work.',
