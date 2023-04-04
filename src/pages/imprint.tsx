@@ -2,8 +2,8 @@ import Link from 'next/link'
 
 import { svgCoords } from '~images/svg_coords'
 
-import imprint from '../styles/imprint.module.scss'
-import utilStyles from '../styles/utils.module.scss'
+import imprint from '@/styles/imprint.module.scss'
+import utilStyles from '@/styles/utils.module.scss'
 
 export default function Imprint() {
   return (
