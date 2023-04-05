@@ -1,62 +1,134 @@
 .container {
   --g1: rgb(170, 0, 0);
   --g2: rgb(164, 147, 151);
-  padding: 1em 0;
+  position: relative;
+  opacity: 1;
+  transition: opacity 0.75s ease;
+
+  .toggle {
+    position: absolute;
+    top: 0.8em;
+    right: 0.8em;
+    cursor: pointer;
+    background: var(--black-high-transparent);
+    padding: 0.5em;
+  }
 
   .controls {
-    margin: 0 auto;
+    display: flex;
+    position: absolute;
+    top: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 2px 2px -2px var(--black-transparent);
+    border: 2px solid var(--grey);
+    border-top: none;
+    background: var(--black-high-transparent);
     padding-bottom: 1em;
-    width: max-content;
+    width: 100%;
+    overflow: hidden;
     text-align: center;
 
     button {
       cursor: pointer;
       margin: 2em;
-      box-shadow: 0 0 2px 1px var(--white);
+      box-shadow: 0 0 2px var(--white);
       border: none;
       border-radius: 0.2em;
       background: var(--black);
       padding: 1em;
+      min-width: 60.5px;
       color: var(--white);
       font-weight: bold;
+      text-align: left;
 
       &:hover {
-        box-shadow: 0 0 2px 1px var(--grey);
+        box-shadow: 0 0 2px var(--grey);
         color: var(--grey);
       }
     }
+
+    p {
+      flex-basis: calc(100% - 50px - 1.5em);
+      padding-left: calc(50px + 1.5em);
+    }
+
+    img {
+      cursor: pointer;
+      padding: 0.5em;
+    }
+  }
+
+  .hidden {
+    border: none;
+    padding-bottom: 0;
+    height: 0;
   }
 
   .game-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     animation: background-pan 10s linear infinite;
     margin: 0 auto;
     box-shadow: 0 0 2px 1px var(--grey);
     background: linear-gradient(to right, var(--g1), var(--g2), var(--g1));
     background-size: 200%;
     width: 100%;
+    height: calc(100vh - 102px);
 
     .row {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-evenly;
 
       .cell {
         flex-shrink: 0;
+        cursor: pointer;
         margin: 1px;
         background: var(--black);
-        width: 17px;
-        height: 17px;
+        width: 16px;
+        height: 16px;
 
-        &:nth-child(50n + 1) {
-          margin-left: 0;
-        }
-        &:nth-child(50n),
-        &:nth-child(25n) {
-          margin-right: 0;
+        &:hover {
+          background: var(--black-transparent);
         }
       }
 
-      .active {
+      .active,
+      .active:hover {
         background: transparent;
+      }
+    }
+  }
+}
+
+.loading {
+  opacity: 0;
+  background-color: var(--light-black);
+}
+
+@media screen and (max-width: 460px) {
+  .container {
+    .controls {
+      flex-direction: column;
+      align-items: flex-start;
+
+      button {
+        margin: 1rem 2rem;
+        width: 100px;
+      }
+
+      p {
+        flex-basis: auto;
+        margin: 1rem 2rem;
+        padding: 0;
+      }
+
+      img {
+        position: absolute;
+        right: 0.8em;
+        bottom: 0.8rem;
       }
     }
   }

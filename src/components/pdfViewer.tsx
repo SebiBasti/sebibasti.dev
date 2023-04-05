@@ -2,7 +2,7 @@ import { DocumentProps } from 'react-pdf'
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css'
 import 'react-pdf/dist/esm/Page/TextLayer.css'
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5'
-import expandIcon from '~/icons/expand-arrow-svgrepo-com.svg'
+import { expandIcon } from '~/icons'
 
 import Image from 'next/image'
 

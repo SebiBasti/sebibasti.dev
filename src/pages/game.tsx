@@ -1,34 +1,40 @@
+import { arrowUp, gear } from '~/icons/'
+
+import Image from 'next/image'
+
 import { useEffect, useRef, useState } from 'react'
 
 import gameStyles from '@/styles/game.module.scss'
 
-const numRows = 30
-const numCols = 50
-
-const generateEmptyGrid = () => {
-  const rows = []
-  for (let i = 0; i < numRows; i++) {
-    rows.push(Array.from(Array(numCols), () => false))
+const generateEmptyGrid = (gridSize: { rows: number; cols: number }) => {
+  const grid = []
+  for (let i = 0; i < gridSize.rows; i++) {
+    grid.push(Array.from(Array(gridSize.cols), () => false))
   }
-  return rows
+  return grid
 }
 
-const generateRandomGrid = () => {
-  const rows = []
-  for (let i = 0; i < numRows; i++) {
-    rows.push(Array.from(Array(numCols), () => Math.random() > 0.5))
+const generateRandomGrid = (gridSize: { rows: number; cols: number }) => {
+  const grid = []
+  for (let i = 0; i < gridSize.rows; i++) {
+    grid.push(Array.from(Array(gridSize.cols), () => Math.random() > 0.5))
   }
-  return rows
+  return grid
 }
 
 export default function Game() {
-  const emptyGrid = generateEmptyGrid()
+  const [gridSize, setGridSize] = useState({ rows: 40, cols: 50 })
+  const emptyGrid = generateEmptyGrid(gridSize)
   const [grid, setGrid] = useState(emptyGrid)
-
   const [isRunning, setIsRunning] = useState(false)
   const [generation, setGeneration] = useState(0)
+  const [loading, setLoading] = useState(true)
+  const [controlHeight, setControlHeight] = useState(0)
+  const [hidden, setHidden] = useState(false)
 
   const runningRef = useRef<boolean>(isRunning)
+  const gameFieldRef = useRef<HTMLDivElement | null>(null)
+  const initialSizeRef = useRef({ rows: 0, cols: 0 })
   runningRef.current = isRunning
 
   const runSimulation = () => {
@@ -37,8 +43,9 @@ export default function Game() {
     }
 
     setGrid((prevGrid) => {
-      const newGrid = generateEmptyGrid()
+      const newGrid = generateEmptyGrid(gridSize)
       let cellsChanged = false
+
       prevGrid.forEach((row, i) => {
         row.forEach((col, j) => {
           const neighbors = countNeighbors(prevGrid, i, j)
@@ -55,15 +62,19 @@ export default function Game() {
           }
         })
       })
+
       const hasLiveCells = newGrid.some((row) => row.some((col) => col))
       if (!cellsChanged || !hasLiveCells) {
         setIsRunning(false)
         return prevGrid
       }
+
+      if (hasLiveCells) {
+        setGeneration((prevGeneration) => prevGeneration + 1)
+      }
+
       return newGrid
     })
-
-    setGeneration((prevGeneration) => prevGeneration + 1)
 
     setTimeout(runSimulation, 100)
   }
@@ -79,8 +90,8 @@ export default function Game() {
         if (i === rowIndex && j === colIndex) {
           return
         }
-        const wrappedRow = (i + numRows) % numRows
-        const wrappedCol = (j + numCols) % numCols
+        const wrappedRow = (i + gridSize.rows) % gridSize.rows
+        const wrappedCol = (j + gridSize.cols) % gridSize.cols
         if (grid[wrappedRow][wrappedCol]) {
           numLiveNeighbors++
         }
@@ -90,9 +101,6 @@ export default function Game() {
   }
 
   const handleCellClick = (rowIndex: number, colIndex: number) => {
-    if (runningRef.current) {
-      return
-    }
     setGrid((prevGrid) =>
       prevGrid.map((row, i) =>
         i === rowIndex
@@ -104,41 +112,105 @@ export default function Game() {
 
   const handleStartStopClick = () => {
     setIsRunning((prevIsRunning) => !prevIsRunning)
-    if (!isRunning) {
+    if (isRunning) {
+      console.log('Game stopped')
+      runningRef.current = false
+    } else {
+      console.log('Game started')
       runningRef.current = true
       runSimulation()
-    } else {
-      runningRef.current = false
     }
   }
 
   const handleClearClick = () => {
-    setGrid(generateEmptyGrid())
+    setIsRunning(false)
+    setGrid(generateEmptyGrid(gridSize))
     setGeneration(0)
   }
 
   const handleRandomizeClick = () => {
-    setGrid(generateRandomGrid())
+    setGrid(generateRandomGrid(gridSize))
     setGeneration(0)
   }
 
+  const toggleMenu = () => {
+    setHidden((prevState) => !prevState)
+  }
+
   useEffect(() => {
+    const setSize = () => {
+      runningRef.current = false
+      const gameField = gameFieldRef.current
+      const initialSize = initialSizeRef.current
+
+      setTimeout(() => {
+        if (gameField) {
+          const rows = Math.floor(gameField.clientHeight / 19)
+          const cols = Math.floor(gameField.clientWidth / 19)
+          if (rows !== initialSize.rows || cols !== initialSize.cols) {
+            initialSizeRef.current = { rows, cols }
+            setGridSize({
+              rows: rows,
+              cols: cols
+            })
+            const newGrid = generateEmptyGrid({ rows: rows, cols: cols })
+            setGrid(newGrid)
+          }
+        }
+      }, 100)
+    }
+    setSize()
     runningRef.current = isRunning
+    setLoading(false)
+
+    const handleResize = () => {
+      setSize()
+      setIsRunning(false)
+      setGeneration(0)
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [isRunning])
 
   return (
-    <section className={gameStyles.container}>
-      <div className={gameStyles.controls}>
+    <section
+      className={`${gameStyles.container} ${loading ? gameStyles.loading : ''}`}
+    >
+      <Image
+        src={gear}
+        alt={'settings icon'}
+        width={50}
+        height={50}
+        className={`${gameStyles.toggle} ${!hidden ? gameStyles.hidden : ''}`}
+        role={'button'}
+        onClick={toggleMenu}
+      />
+      <div
+        className={`${gameStyles.controls} ${hidden ? gameStyles.hidden : ''}`}
+      >
         <button onClick={handleStartStopClick}>
           {isRunning ? 'Stop' : 'Start'}
         </button>
         <button onClick={handleRandomizeClick}>Randomize</button>
         <button onClick={handleClearClick}>Clear</button>
         <p>Generations: {generation}</p>
+        <Image
+          src={arrowUp}
+          alt={'hide menu icon'}
+          width={50}
+          height={50}
+          role={'button'}
+          onClick={toggleMenu}
+        />
       </div>
-      <div className={gameStyles['game-field']}>
+      <div
+        className={gameStyles['game-field']}
+        ref={gameFieldRef}
+        data-running={isRunning}
+      >
         {grid.map((rows, i) => (
-          <div key={i} className={gameStyles.row}>
+          <div key={i} className={gameStyles.row} id={`${i}`}>
             {rows.map((col, j) => (
               <div
                 key={`${i}-${j}`}
