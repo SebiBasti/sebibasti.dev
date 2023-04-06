@@ -56,6 +56,12 @@
       font-weight: bold;
     }
 
+    img:first-child {
+      position: absolute;
+      top: 0.8rem;
+      right: 0.8rem;
+    }
+
     img {
       cursor: pointer;
       padding: 0.5em;
@@ -110,7 +116,20 @@
   background-color: var(--light-black);
 }
 
-@media screen and (max-width: 460px) {
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+
+  .game-field {
+    height: 100vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
   .container {
     .controls {
       flex-direction: column;

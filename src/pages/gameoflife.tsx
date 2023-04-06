@@ -1,4 +1,4 @@
-import { arrowUp, gear } from '~/icons/'
+import { arrowUp, expandArrows, gear, minimizeArrows } from '~/icons/'
 
 import Image from 'next/image'
 
@@ -29,8 +29,8 @@ export default function Gameoflife() {
   const [isRunning, setIsRunning] = useState(false)
   const [generation, setGeneration] = useState(0)
   const [loading, setLoading] = useState(true)
-  const [controlHeight, setControlHeight] = useState(0)
   const [hidden, setHidden] = useState(false)
+  const [fullscreen, setFullscreen] = useState(false)
 
   const runningRef = useRef<boolean>(isRunning)
   const gameFieldRef = useRef<HTMLDivElement | null>(null)
@@ -137,28 +137,35 @@ export default function Gameoflife() {
     setHidden((prevState) => !prevState)
   }
 
-  useEffect(() => {
-    const setSize = () => {
-      runningRef.current = false
-      const gameField = gameFieldRef.current
-      const initialSize = initialSizeRef.current
+  const setSize = () => {
+    runningRef.current = false
+    const gameField = gameFieldRef.current
+    const initialSize = initialSizeRef.current
 
-      setTimeout(() => {
-        if (gameField) {
-          const rows = Math.floor(gameField.clientHeight / 19)
-          const cols = Math.floor(gameField.clientWidth / 19)
-          if (rows !== initialSize.rows || cols !== initialSize.cols) {
-            initialSizeRef.current = { rows, cols }
-            setGridSize({
-              rows: rows,
-              cols: cols
-            })
-            const newGrid = generateEmptyGrid({ rows: rows, cols: cols })
-            setGrid(newGrid)
-          }
+    setTimeout(() => {
+      if (gameField) {
+        const rows = Math.floor(gameField.clientHeight / 19)
+        const cols = Math.floor(gameField.clientWidth / 19)
+        if (rows !== initialSize.rows || cols !== initialSize.cols) {
+          initialSizeRef.current = { rows, cols }
+          setGridSize({
+            rows: rows,
+            cols: cols
+          })
+          const newGrid = generateEmptyGrid({ rows: rows, cols: cols })
+          setGrid(newGrid)
         }
-      }, 100)
-    }
+      }
+    }, 100)
+  }
+
+  const toggleFullscreen = () => {
+    setFullscreen((prevState) => !prevState)
+    setIsRunning(false)
+    setSize()
+  }
+
+  useEffect(() => {
     setSize()
     runningRef.current = isRunning
     setLoading(false)
@@ -175,11 +182,13 @@ export default function Gameoflife() {
 
   return (
     <section
-      className={`${gameStyles.container} ${loading ? gameStyles.loading : ''}`}
+      className={`${gameStyles.container} ${
+        loading ? gameStyles.loading : ''
+      } ${fullscreen ? gameStyles.fullscreen : ''}`}
     >
       <Image
         src={gear}
-        alt={'settings icon'}
+        alt={'show settings icon'}
         width={50}
         height={50}
         className={`${gameStyles.toggle} ${!hidden ? gameStyles.hidden : ''}`}
@@ -189,6 +198,14 @@ export default function Gameoflife() {
       <div
         className={`${gameStyles.controls} ${hidden ? gameStyles.hidden : ''}`}
       >
+        <Image
+          src={fullscreen ? minimizeArrows : expandArrows}
+          alt={'toggle fullscreen'}
+          width={50}
+          height={50}
+          role={'button'}
+          onClick={toggleFullscreen}
+        />
         <button onClick={handleStartStopClick}>
           {isRunning ? 'Stop' : 'Start'}
         </button>
