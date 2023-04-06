@@ -9,6 +9,7 @@
     position: absolute;
     top: 0.8em;
     right: 0.8em;
+    transition: top 0.75s ease;
     cursor: pointer;
     background: var(--black-high-transparent);
     padding: 0.5em;
@@ -21,6 +22,7 @@
     flex-wrap: wrap;
     justify-content: center;
     backdrop-filter: blur(2px);
+    transition: top 0.75s ease;
     box-shadow: 0 2px 2px -2px var(--black-transparent);
     border: 2px solid var(--grey);
     border-top: none;
@@ -61,9 +63,9 @@
   }
 
   .hidden {
-    border: none;
+    top: -275px;
+    transition: top 0.75s ease;
     padding-bottom: 0;
-    height: 0;
   }
 
   .game-field {
@@ -126,7 +128,7 @@
 
       p {
         flex-basis: auto;
-        margin: 1rem 2rem;
+        margin: 1rem 2rem 0.5rem;
         padding: 0;
       }
 
