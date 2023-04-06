@@ -22,7 +22,7 @@ const generateRandomGrid = (gridSize: { rows: number; cols: number }) => {
   return grid
 }
 
-export default function Game() {
+export default function Gameoflife() {
   const [gridSize, setGridSize] = useState({ rows: 40, cols: 50 })
   const emptyGrid = generateEmptyGrid(gridSize)
   const [grid, setGrid] = useState(emptyGrid)

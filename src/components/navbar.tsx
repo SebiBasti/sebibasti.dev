@@ -12,13 +12,7 @@ export default function Navbar() {
       <nav className={navbar.nav}>
         <ul>
           <li>
-            <Link
-              href="https://www.codewars.com/users/SebiBasti/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              codewars
-            </Link>
+            <Link href="/gameoflife">Game&nbsp;of&nbsp;Life</Link>
           </li>
           <li>
             <Link
