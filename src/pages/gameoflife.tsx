@@ -1,3 +1,5 @@
+import gameOfLifeSEO from '@/config/gameoflife-seo.config'
+import { NextSeo } from 'next-seo'
 import { arrowUp, expandArrows, gear, minimizeArrows } from '~/icons/'
 
 import Image from 'next/image'
@@ -181,65 +183,70 @@ export default function Gameoflife() {
   }, [isRunning])
 
   return (
-    <section
-      className={`${gameStyles.container} ${
-        loading ? gameStyles.loading : ''
-      } ${fullscreen ? gameStyles.fullscreen : ''}`}
-    >
-      <Image
-        src={gear}
-        alt={'show settings icon'}
-        width={50}
-        height={50}
-        className={`${gameStyles.toggle} ${!hidden ? gameStyles.hidden : ''}`}
-        role={'button'}
-        onClick={toggleMenu}
-      />
-      <div
-        className={`${gameStyles.controls} ${hidden ? gameStyles.hidden : ''}`}
+    <>
+      <NextSeo {...gameOfLifeSEO} />
+      <section
+        className={`${gameStyles.container} ${
+          loading ? gameStyles.loading : ''
+        } ${fullscreen ? gameStyles.fullscreen : ''}`}
       >
         <Image
-          src={fullscreen ? minimizeArrows : expandArrows}
-          alt={'toggle fullscreen'}
+          src={gear}
+          alt={'show settings icon'}
           width={50}
           height={50}
-          role={'button'}
-          onClick={toggleFullscreen}
-        />
-        <button onClick={handleStartStopClick}>
-          {isRunning ? 'Stop' : 'Start'}
-        </button>
-        <button onClick={handleRandomizeClick}>Randomize</button>
-        <button onClick={handleClearClick}>Clear</button>
-        <p>Generations: {generation}</p>
-        <Image
-          src={arrowUp}
-          alt={'hide menu icon'}
-          width={50}
-          height={50}
+          className={`${gameStyles.toggle} ${!hidden ? gameStyles.hidden : ''}`}
           role={'button'}
           onClick={toggleMenu}
         />
-      </div>
-      <div
-        className={gameStyles['game-field']}
-        ref={gameFieldRef}
-        data-running={isRunning}
-      >
-        {grid.map((rows, i) => (
-          <div key={i} className={gameStyles.row} id={`${i}`}>
-            {rows.map((col, j) => (
-              <div
-                key={`${i}-${j}`}
-                onClick={() => handleCellClick(i, j)}
-                className={`${gameStyles.cell} ${
-                  grid[i][j] ? gameStyles.active : ''
-                }`}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
-    </section>
+        <div
+          className={`${gameStyles.controls} ${
+            hidden ? gameStyles.hidden : ''
+          }`}
+        >
+          <Image
+            src={fullscreen ? minimizeArrows : expandArrows}
+            alt={'toggle fullscreen'}
+            width={50}
+            height={50}
+            role={'button'}
+            onClick={toggleFullscreen}
+          />
+          <button onClick={handleStartStopClick}>
+            {isRunning ? 'Stop' : 'Start'}
+          </button>
+          <button onClick={handleRandomizeClick}>Randomize</button>
+          <button onClick={handleClearClick}>Clear</button>
+          <p>Generations: {generation}</p>
+          <Image
+            src={arrowUp}
+            alt={'hide menu icon'}
+            width={50}
+            height={50}
+            role={'button'}
+            onClick={toggleMenu}
+          />
+        </div>
+        <div
+          className={gameStyles['game-field']}
+          ref={gameFieldRef}
+          data-running={isRunning}
+        >
+          {grid.map((rows, i) => (
+            <div key={i} className={gameStyles.row} id={`${i}`}>
+              {rows.map((col, j) => (
+                <div
+                  key={`${i}-${j}`}
+                  onClick={() => handleCellClick(i, j)}
+                  className={`${gameStyles.cell} ${
+                    grid[i][j] ? gameStyles.active : ''
+                  }`}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   )
 }

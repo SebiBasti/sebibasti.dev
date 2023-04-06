@@ -1,4 +1,6 @@
-export const SEO = {
+import { DefaultSeoProps } from 'next-seo'
+
+const config: DefaultSeoProps = {
   title: 'sebibasti.dev',
   description:
     'Hi, my name is Sebastian and I like coding and the web. This is my digital playground and the place where I show my work.',
@@ -7,7 +9,6 @@ export const SEO = {
     locale: 'en_us',
     url: 'https://www.sebibasti.dev/',
     title: 'sebibasti.dev',
-    site_name: 'sebibasti.dev - Fullstack Web-Development',
     description:
       'Hi, my name is Sebastian and I like coding and the web. This is my digital playground and the place where I show my work.',
     images: [
@@ -21,3 +22,5 @@ export const SEO = {
     ]
   }
 }
+
+export default config

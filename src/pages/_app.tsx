@@ -1,4 +1,4 @@
-import { SEO } from '@/config/next-seo.config'
+import SEO from '@/config/next-seo.config'
 import { Analytics } from '@vercel/analytics/react'
 import { DefaultSeo } from 'next-seo'
 
