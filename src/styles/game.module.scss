@@ -1,3 +1,8 @@
+.no-scroll-select {
+  overflow: hidden;
+  user-select: none;
+}
+
 .container {
   --g1: rgb(170, 0, 0);
   --g2: rgb(164, 147, 151);

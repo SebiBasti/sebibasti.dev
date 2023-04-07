@@ -1,10 +1,18 @@
 import gameOfLifeSEO from '@/config/gameoflife-seo.config'
 import { NextSeo } from 'next-seo'
+import { useThrottledCallback } from 'use-debounce'
 import { arrowUp, expandArrows, gear, minimizeArrows } from '~/icons/'
 
 import Image from 'next/image'
 
-import { useEffect, useRef, useState } from 'react'
+import {
+  MouseEvent,
+  TouchEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 
 import gameStyles from '@/styles/game.module.scss'
 
@@ -24,6 +32,66 @@ const generateRandomGrid = (gridSize: { rows: number; cols: number }) => {
   return grid
 }
 
+let timeoutId: NodeJS.Timeout
+const useHandleTouchStart = (useHandleCellClick: Function) => {
+  const [currentChildElement, setCurrentChildElement] =
+    useState<HTMLElement | null>(null)
+  const [isActive, setIsActive] = useState<boolean | null>(null)
+  const [touchOver, setTouchOver] = useState<boolean>(false)
+  const [hasMouseMoveEvent, setHasMouseMoveEvent] = useState<boolean>(false)
+  const handleCellClick = useHandleCellClick()
+  // Check if the event has the property 'touches'
+  return useThrottledCallback(
+    (event: MouseEvent | TouchEvent, mouseDown: boolean = true) => {
+      setTouchOver(false)
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => {
+        setTouchOver(true)
+      }, 500)
+
+      const childElement = document.elementFromPoint(
+        'touches' in event ? event.touches[0].clientX : event.clientX,
+        'touches' in event ? event.touches[0].clientY : event.clientY
+      ) as HTMLElement
+
+      if (!childElement || !childElement.matches(`.${gameStyles.cell}`))
+        return false
+
+      const row = Number(childElement.dataset.row)
+      const cell = Number(childElement.dataset.cell)
+
+      if (
+        isActive === null &&
+        mouseDown &&
+        (event.type === 'mousemove' || event.type === 'touchmove')
+      ) {
+        setIsActive(() => !childElement.matches(`.${gameStyles.active}`))
+      }
+
+      if (
+        mouseDown &&
+        (event.type === 'mousemove' || event.type === 'touchmove') &&
+        childElement.matches(`.${gameStyles.cell}`) &&
+        childElement.matches(`.${gameStyles.active}`) !== isActive &&
+        currentChildElement?.id !== childElement.id
+      ) {
+        handleCellClick(row, cell)
+        setCurrentChildElement(childElement)
+        setHasMouseMoveEvent(true)
+      } else if (event.type === 'click' && !hasMouseMoveEvent) {
+        console.log('click fired')
+        handleCellClick(row, cell)
+        setHasMouseMoveEvent(false)
+      } else if (!mouseDown || touchOver) {
+        console.log('mousedown over')
+        setIsActive(null)
+        setHasMouseMoveEvent(false)
+      }
+    },
+    50
+  )
+}
+
 export default function Gameoflife() {
   const [gridSize, setGridSize] = useState({ rows: 40, cols: 50 })
   const emptyGrid = generateEmptyGrid(gridSize)
@@ -33,11 +101,24 @@ export default function Gameoflife() {
   const [loading, setLoading] = useState(true)
   const [hidden, setHidden] = useState(false)
   const [fullscreen, setFullscreen] = useState(false)
+  const [mouseDown, setMouseDown] = useState(false)
 
   const runningRef = useRef<boolean>(isRunning)
   const gameFieldRef = useRef<HTMLDivElement | null>(null)
   const initialSizeRef = useRef({ rows: 0, cols: 0 })
   runningRef.current = isRunning
+
+  const useHandleCellClick = () => (rowIndex: number, colIndex: number) => {
+    setGrid((prevGrid) =>
+      prevGrid.map((row, i) =>
+        i === rowIndex
+          ? row.map((col, j) => (j === colIndex ? !col : col))
+          : row
+      )
+    )
+  }
+
+  const handleTouchStart = useHandleTouchStart(useHandleCellClick)
 
   const runSimulation = () => {
     if (!runningRef.current) {
@@ -102,16 +183,6 @@ export default function Gameoflife() {
     return numLiveNeighbors
   }
 
-  const handleCellClick = (rowIndex: number, colIndex: number) => {
-    setGrid((prevGrid) =>
-      prevGrid.map((row, i) =>
-        i === rowIndex
-          ? row.map((col, j) => (j === colIndex ? !col : col))
-          : row
-      )
-    )
-  }
-
   const handleStartStopClick = () => {
     setIsRunning((prevIsRunning) => !prevIsRunning)
     if (isRunning) {
@@ -161,10 +232,34 @@ export default function Gameoflife() {
     }, 100)
   }
 
+  const handleResize = useCallback(() => {
+    setSize()
+    setIsRunning(false)
+    setGeneration(0)
+  }, [])
+
   const toggleFullscreen = () => {
     setFullscreen((prevState) => !prevState)
     setIsRunning(false)
     setSize()
+  }
+
+  // This is needed because removeEventListener can not remove void functions
+  // e.g. window.removeEventListener('mousedown', () => handleMouseDown(true)) will not work
+  // because it can't find the reference of that function
+  const setMouseDownTrue = () => {
+    console.log('touchstart')
+    setMouseDown(true)
+  }
+
+  const setMouseDownFalse = () => {
+    console.log('touchend')
+    setMouseDown(false)
+  }
+
+  const preventDrag = (event: DragEvent) => {
+    event.preventDefault()
+    return false
   }
 
   useEffect(() => {
@@ -172,15 +267,24 @@ export default function Gameoflife() {
     runningRef.current = isRunning
     setLoading(false)
 
-    const handleResize = () => {
-      setSize()
-      setIsRunning(false)
-      setGeneration(0)
-    }
+    document.body.classList.add(gameStyles['no-scroll-select'])
 
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [isRunning])
+    window.addEventListener('mousedown', setMouseDownTrue)
+    window.addEventListener('touchstart', setMouseDownTrue)
+    window.addEventListener('mouseup', setMouseDownFalse)
+    window.addEventListener('touchend', setMouseDownFalse)
+    window.addEventListener('dragstart', preventDrag)
+    return () => {
+      document.body.classList.remove(gameStyles.noScroll)
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('mousedown', setMouseDownTrue)
+      window.removeEventListener('touchstart', setMouseDownTrue)
+      window.removeEventListener('mouseup', setMouseDownFalse)
+      window.removeEventListener('touchend', setMouseDownFalse)
+      window.removeEventListener('dragstart', preventDrag)
+    }
+  }, [handleResize, isRunning])
 
   return (
     <>
@@ -189,6 +293,7 @@ export default function Gameoflife() {
         className={`${gameStyles.container} ${
           loading ? gameStyles.loading : ''
         } ${fullscreen ? gameStyles.fullscreen : ''}`}
+        draggable="false"
       >
         <Image
           src={gear}
@@ -231,13 +336,18 @@ export default function Gameoflife() {
           className={gameStyles['game-field']}
           ref={gameFieldRef}
           data-running={isRunning}
+          onClick={(event) => handleTouchStart(event)}
+          onTouchMove={(event) => handleTouchStart(event, mouseDown)}
+          onMouseMove={(event) => handleTouchStart(event, mouseDown)}
         >
           {grid.map((rows, i) => (
             <div key={i} className={gameStyles.row} id={`${i}`}>
               {rows.map((col, j) => (
                 <div
                   key={`${i}-${j}`}
-                  onClick={() => handleCellClick(i, j)}
+                  id={`${i}-${j}`}
+                  data-row={i}
+                  data-cell={j}
                   className={`${gameStyles.cell} ${
                     grid[i][j] ? gameStyles.active : ''
                   }`}
