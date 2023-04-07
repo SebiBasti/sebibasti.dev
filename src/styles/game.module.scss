@@ -28,8 +28,8 @@
     justify-content: center;
     backdrop-filter: blur(2px);
     transition: top 0.75s ease;
+    outline: 2px solid var(--grey);
     box-shadow: 0 2px 2px -2px var(--black-transparent);
-    border: 2px solid var(--grey);
     border-top: none;
     background: var(--black-high-transparent);
     padding-bottom: 1em;
