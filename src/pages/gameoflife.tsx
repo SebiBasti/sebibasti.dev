@@ -79,16 +79,14 @@ const useHandleTouchStart = (useHandleCellClick: Function) => {
         setCurrentChildElement(childElement)
         setHasMouseMoveEvent(true)
       } else if (event.type === 'click' && !hasMouseMoveEvent) {
-        console.log('click fired')
         handleCellClick(row, cell)
         setHasMouseMoveEvent(false)
       } else if (!mouseDown || touchOver) {
-        console.log('mousedown over')
         setIsActive(null)
         setHasMouseMoveEvent(false)
       }
     },
-    50
+    10
   )
 }
 
@@ -186,10 +184,8 @@ export default function Gameoflife() {
   const handleStartStopClick = () => {
     setIsRunning((prevIsRunning) => !prevIsRunning)
     if (isRunning) {
-      console.log('Game stopped')
       runningRef.current = false
     } else {
-      console.log('Game started')
       runningRef.current = true
       runSimulation()
     }
@@ -248,12 +244,10 @@ export default function Gameoflife() {
   // e.g. window.removeEventListener('mousedown', () => handleMouseDown(true)) will not work
   // because it can't find the reference of that function
   const setMouseDownTrue = () => {
-    console.log('touchstart')
     setMouseDown(true)
   }
 
   const setMouseDownFalse = () => {
-    console.log('touchend')
     setMouseDown(false)
   }
 
