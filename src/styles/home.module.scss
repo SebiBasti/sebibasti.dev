@@ -2,7 +2,6 @@
   position: relative;
   filter: grayscale(75%);
   transition: filter 0.4s ease-out;
-  box-shadow: 0 0 4px var(--black);
   border-radius: 50%;
   line-height: 0;
 
@@ -13,6 +12,7 @@
 
   .picture {
     border-radius: 50%;
+    box-shadow: 0 0 4px var(--black);
   }
 }
 
@@ -28,6 +28,7 @@
 @media screen and (min-width: 500px) {
   .picture-container {
     width: 30%;
+    padding: 1rem;
     min-width: 150px;
   }
 

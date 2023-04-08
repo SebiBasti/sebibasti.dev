@@ -15,13 +15,7 @@ export default function Navbar() {
             <Link href="/gameoflife">Game&nbsp;of&nbsp;Life</Link>
           </li>
           <li>
-            <Link
-              href="https://github.com/SebiBasti/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              github
-            </Link>
+            <Link href="/uses">uses</Link>
           </li>
           <li>
             <Link href="/cv">cv</Link>

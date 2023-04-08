@@ -1,5 +1,5 @@
 .header {
-  margin: 2rem 2rem 0;
+  padding: 0 2rem;
   --font-calc: calc(20px + (28 - 20) * ((100vw - 320px) / (1000 - 320)));
   font-size: clamp(20px, var(--font-calc), 28px);
   line-height: 1;
@@ -13,14 +13,22 @@
 
 .container-500 {
   width: 100%;
-  border-bottom: 2px solid var(--grey);
-  padding: 2rem;
+  border-top: 2px solid var(--grey);
+  padding: 1rem 2rem;
+
+  &:first-of-type {
+    border: none;
+  }
 }
 
 .container-750 {
   width: 100%;
-  border-bottom: 2px solid var(--grey);
+  border-top: 2px solid var(--grey);
   padding: 2rem;
+
+  &:first-of-type {
+    border: none;
+  }
 }
 
 @media screen and (min-width: 500px) {

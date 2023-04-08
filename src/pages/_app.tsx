@@ -7,6 +7,7 @@ import { Courier_Prime } from 'next/font/google'
 import Head from 'next/head'
 
 import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
 
 import { useCanonicalUrl } from '@/utils'
 
@@ -28,6 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <DefaultSeo canonical={canonicalUrl} {...SEO} />
         <Navbar />
         <Component {...pageProps} />
+        <Footer />
         <Analytics />
       </main>
     </>

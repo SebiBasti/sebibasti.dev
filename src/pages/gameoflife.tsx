@@ -270,7 +270,7 @@ export default function Gameoflife() {
     window.addEventListener('touchend', setMouseDownFalse)
     window.addEventListener('dragstart', preventDrag)
     return () => {
-      document.body.classList.remove(gameStyles.noScroll)
+      document.body.classList.remove(gameStyles['no-scroll-select'])
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousedown', setMouseDownTrue)
       window.removeEventListener('touchstart', setMouseDownTrue)

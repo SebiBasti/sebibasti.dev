@@ -24,6 +24,10 @@
     text-transform: uppercase;
   }
 
+  &:first-child {
+    margin-bottom: 2rem;
+  }
+
   .picture {
     border-radius: 2px;
   }
