@@ -21,7 +21,7 @@ export function Projects() {
               src={picture.src}
               alt={picture.alt}
               sizes={
-                '(min-width: 750px) min(calc(50vw - 4rem), calc(500px - 4rem)), calc(100vw - 6rem)'
+                '(min-width: 750px) min(calc(50vw - 5rem), calc(500px - 5rem)), calc(100vw - 8rem)'
               }
               className={projects.picture}
               priority
