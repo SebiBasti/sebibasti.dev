@@ -1,10 +1,12 @@
 .container {
-  min-height: 4rem;
-  border-top: 2px solid var(--grey);
+  box-shadow: 0 -2px 0 var(--grey);
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
+  z-index: 0;
+  height: 4rem;
 
   p {
     margin-right: 1rem;
@@ -13,8 +15,8 @@
 
   a {
     margin: 0 1rem;
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 2rem;
+    height: 2rem;
     position: relative;
     display: inline-block;
 
@@ -24,7 +26,7 @@
     }
 
     &:hover:before {
-      opacity: 0.9;
+      opacity: 1;
       transition: opacity 0.5s ease;
       content: attr(data-alt);
       position: absolute;
@@ -47,17 +49,34 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  .container {
+    height: 5rem;
+    p {
+      width: min-content;
+    }
+  }
+}
+
 @media screen and (max-width: 480px) {
   .container {
     display: block;
+    height: 6.5rem;
 
     p {
-      margin: 0;
+      width: 100%;
+      margin: 0 0 1rem 0;
     }
 
     a {
       width: 1.8rem;
       height: 1.8rem;
     }
+  }
+}
+
+@media screen and (max-width: 368px) {
+  .container {
+    height: 8rem;
   }
 }

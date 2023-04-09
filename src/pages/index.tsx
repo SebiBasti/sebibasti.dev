@@ -2,14 +2,13 @@ import { profilePicture } from '~images'
 
 import Image from 'next/image'
 
-import Projects from '../components/projects'
-import home from '../styles/home.module.scss'
-import utilStyles from '../styles/utils.module.scss'
+import { Projects } from '@/components'
+import home from '@/styles/home.module.scss'
 
 export default function Home() {
   return (
-    <>
-      <section className={utilStyles['container-500']}>
+    <main>
+      <section className={home.container}>
         <div className={home['picture-container']}>
           <Image
             src={profilePicture}
@@ -21,12 +20,11 @@ export default function Home() {
             priority
           />
         </div>
-        <span className={home['top-description']}>
-          Hi, my name is Sebastian and I like coding and the web. This is my
-          digital play&shy;ground and the place where I show my work.
-        </span>
+        <h1>
+          Hey there! Welcome to my personal portfolio and digital playground.
+        </h1>
       </section>
       <Projects />
-    </>
+    </main>
   )
 }

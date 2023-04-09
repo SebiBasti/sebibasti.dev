@@ -9,15 +9,16 @@
   position: relative;
   opacity: 1;
   transition: opacity 0.75s ease;
+  height: 100%;
 
   .toggle {
     position: absolute;
-    top: 0.8em;
-    right: 0.8em;
+    top: 1rem;
+    right: 1rem;
     transition: top 0.75s ease;
     cursor: pointer;
     background: var(--black-high-transparent);
-    padding: 0.5em;
+    padding: 0.2em;
   }
 
   .controls {
@@ -27,7 +28,7 @@
     flex-wrap: wrap;
     justify-content: center;
     backdrop-filter: blur(2px);
-    transition: top 0.75s ease;
+    transition: top 1s ease;
     outline: 2px solid var(--grey);
     box-shadow: 0 2px 2px -2px var(--black-transparent);
     border-top: none;
@@ -56,26 +57,29 @@
     }
 
     p {
-      flex-basis: calc(100% - 50px - 1.5em);
-      padding-left: calc(50px + 1.5em);
+      margin-top: 2rem;
+      flex-basis: 100%;
       font-weight: bold;
     }
 
-    img:first-child {
+    img {
       position: absolute;
-      top: 0.8rem;
-      right: 0.8rem;
+      cursor: pointer;
+      right: 1rem;
     }
 
-    img {
-      cursor: pointer;
-      padding: 0.5em;
+    img:first-child {
+      top: 1rem;
+    }
+
+    img:last-child {
+      bottom: 1rem;
     }
   }
 
   .hidden {
-    top: -275px;
-    transition: top 0.75s ease;
+    top: -500px;
+    transition: top 1s ease;
     padding-bottom: 0;
   }
 
@@ -85,7 +89,6 @@
     justify-content: space-evenly;
     animation: background-pan 10s linear infinite;
     margin: 0 auto;
-    box-shadow: 0 0 2px 1px var(--grey);
     background: linear-gradient(to right, var(--g1), var(--g2), var(--g1));
     background-size: 200%;
     width: 100%;
@@ -125,7 +128,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 4;
   width: 100vw;
   height: 100vh;
 
@@ -134,7 +137,15 @@
   }
 }
 
+.layout-shift {
+  height: calc(100vh - 7rem);
+}
+
 @media screen and (max-width: 600px) {
+  .layout-shift {
+    height: calc(100vh - 8rem);
+  }
+
   .container {
     .controls {
       flex-direction: column;
@@ -162,6 +173,18 @@
         bottom: 0.8rem;
       }
     }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .layout-shift {
+    height: calc(100vh - 9.5rem);
+  }
+}
+
+@media screen and (max-width: 368px) {
+  .layout-shift {
+    height: calc(100vh - 11rem);
   }
 }
 

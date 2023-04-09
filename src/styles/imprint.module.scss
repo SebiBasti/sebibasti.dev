@@ -1,11 +1,8 @@
 .layout {
+  padding: 2rem;
+
   p {
     margin-bottom: 2rem;
-
-    &:first-child,
-    &:last-child {
-      margin: 0;
-    }
   }
 
   h1,
@@ -14,37 +11,31 @@
     font-weight: bold;
   }
 
+  h3 {
+    margin-bottom: 0.5rem;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
+    display: inline-block;
 
     &:hover {
       text-decoration: underline var(--white);
     }
   }
 
-  > div:last-of-type {
-    margin-bottom: 2rem;
+  p:last-of-type {
+    margin-bottom: 1rem;
   }
 }
 
-.phone-email-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+.svg-container {
+  margin-left: 0.5rem;
 
-  p {
-    padding-right: 0.5em;
-  }
-
-  .svg-container {
-    display: flex;
-    align-items: center;
-    height: 1.6em;
-
-    svg {
-      height: 1.12em;
-    }
+  svg {
+    height: 1.1875rem;
+    vertical-align: text-bottom;
   }
 }
 
@@ -52,28 +43,33 @@
   font-size: 10px;
 }
 
-@media screen and (max-width: 500px) {
-  .layout {
-    --font-calc: calc(14px + (16 - 14) * ((100vw - 320px) / (500 - 320)));
-    font-size: clamp(14px, var(--font-calc), 16px);
-  }
-}
-
 @media (hover: hover) {
-  .phone-email-container {
-    a {
-      position: relative;
+  .svg-container {
+    position: relative;
 
-      &:hover::after {
-        position: absolute;
-        bottom: 5px;
-        background: var(--white);
-        width: 100%;
-        height: 1px;
-        content: '';
-      }
+    &:hover::after {
+      position: absolute;
+      left: 0;
+      bottom: 5px;
+      background: var(--white);
+      width: 100%;
+      height: 1px;
+      content: '';
     }
   }
 }
 
-// TODO: change font calculation
+@media screen and (max-width: 430px) {
+  .svg-container {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .svg-container {
+    svg {
+      transform: scale(0.9) translateX(-5%);
+    }
+  }
+}

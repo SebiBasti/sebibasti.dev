@@ -6,17 +6,26 @@ import { expandIcon } from '~/icons'
 
 import Image from 'next/image'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { useWidth } from '@/utils'
 
 import pdf from '@/styles/pdf.module.scss'
 
 export default function PDFViewer(props: DocumentProps) {
+  const [numPages, setNumPages] = useState<number | null>(null)
   const mainRef = useRef<HTMLDivElement>(null)
   const width = useWidth(mainRef) // source 1
   const [buttonVisible, setButtonVisible] = useState<boolean>(false)
   const [fullscreen, setFullscreen] = useState<boolean>(false)
+
+  function onDocumentLoadSuccess({
+    numPages: nextNumPages
+  }: {
+    numPages: number
+  }) {
+    setNumPages(nextNumPages)
+  }
 
   useEffect(
     () => setButtonVisible((width && width < 996) || fullscreen),
@@ -37,6 +46,7 @@ export default function PDFViewer(props: DocumentProps) {
       inputRef={mainRef}
       file={props.file}
       className={`${pdf.document} ` + `${fullscreen ? pdf.fullscreen : ''}`}
+      onLoadSuccess={onDocumentLoadSuccess}
       loading={
         <div className={pdf.container}>
           <div className={pdf.loader} />
@@ -55,24 +65,26 @@ export default function PDFViewer(props: DocumentProps) {
         </div>
       }
     >
-      <Page
-        renderMode={'svg'}
-        width={width}
-        key={`cv`}
-        pageNumber={1}
-        className={pdf.page}
-        error={
-          <div className={pdf.container}>
-            <p>An error occurred!</p>
-            <a href={props.file} target="_blank" rel="noopener noreferrer">
-              link to file
-            </a>
-          </div>
-        }
-        renderAnnotationLayer={true}
-        renderTextLayer={true}
-      />
       {buttonVisible ? expandButton : null}
+      {Array.from(new Array(numPages), (el, index) => (
+        <Page
+          renderMode={'svg'}
+          width={width}
+          key={`page_${index + 1}`}
+          pageNumber={index + 1}
+          className={pdf.page}
+          error={
+            <div className={pdf.container}>
+              <p>An error occurred!</p>
+              <a href={props.file} target="_blank" rel="noopener noreferrer">
+                link to file
+              </a>
+            </div>
+          }
+          renderAnnotationLayer={true}
+          renderTextLayer={true}
+        />
+      ))}
     </Document>
   )
 }

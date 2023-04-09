@@ -2,17 +2,22 @@ import Link from 'next/link'
 
 import navbar from '@/styles/navbar.module.scss'
 
-import Logo from './logo'
+import { Logo } from '@/components'
 
-export default function Navbar() {
+export function Navbar() {
   return (
     <header className={navbar.container}>
       <Logo />
-      <input type="checkbox" id="nav-toggle" className={navbar.toggle} />
+      <input
+        type="checkbox"
+        id="nav-toggle"
+        className={navbar.toggle}
+        aria-label="open navigation"
+      />
       <nav className={navbar.nav}>
         <ul>
           <li>
-            <Link href="/gameoflife">Game&nbsp;of&nbsp;Life</Link>
+            <Link href="/gameoflife">game&nbsp;of&nbsp;life</Link>
           </li>
           <li>
             <Link href="/uses">uses</Link>

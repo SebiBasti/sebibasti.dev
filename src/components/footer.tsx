@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { codewars, github, linkedin } from '~/icons'
 
-export default function Footer() {
+export function Footer() {
   return (
     <footer className={footerStyle.container}>
       <p>Sebastian&nbsp;Remm ©&nbsp;2021&nbsp;-&nbsp;2023</p>

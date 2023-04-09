@@ -54,7 +54,8 @@
     &:before {
       animation: typewriter var(--typewriter-speed)
         steps(var(--typewriter-steps)) 2s forwards;
-      background: hsla(0, 0%, 7%, 1);
+      background: var(--black);
+      height: 2rem;
     }
 
     &:after {

@@ -1,9 +1,12 @@
 import usesStyle from '@/styles/uses.module.scss'
 import Link from 'next/link'
+import { NextSeo } from 'next-seo'
+import usesSEO from '@/config/uses-seo.config'
 
 export default function Uses() {
   return (
-    <section className={usesStyle.container}>
+    <main className={usesStyle.container}>
+      <NextSeo {...usesSEO} />
       <h1>This&nbsp;is my&nbsp;current Hard-&nbsp;and Software Setup:</h1>
       <h2>Hardware</h2>
       <ul>
@@ -55,6 +58,6 @@ export default function Uses() {
         <li>Browser: Firefox Developer Edition</li>
         <li>Terminal: iTerm</li>
       </ul>
-    </section>
+    </main>
   )
 }

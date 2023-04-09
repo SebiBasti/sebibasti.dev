@@ -281,7 +281,7 @@ export default function Gameoflife() {
   }, [handleResize, isRunning])
 
   return (
-    <>
+    <main className={gameStyles['layout-shift']}>
       <NextSeo {...gameOfLifeSEO} />
       <section
         className={`${gameStyles.container} ${
@@ -292,8 +292,8 @@ export default function Gameoflife() {
         <Image
           src={gear}
           alt={'show settings icon'}
-          width={50}
-          height={50}
+          width={40}
+          height={40}
           className={`${gameStyles.toggle} ${!hidden ? gameStyles.hidden : ''}`}
           role={'button'}
           onClick={toggleMenu}
@@ -306,8 +306,8 @@ export default function Gameoflife() {
           <Image
             src={fullscreen ? minimizeArrows : expandArrows}
             alt={'toggle fullscreen'}
-            width={50}
-            height={50}
+            width={40}
+            height={40}
             role={'button'}
             onClick={toggleFullscreen}
           />
@@ -320,8 +320,8 @@ export default function Gameoflife() {
           <Image
             src={arrowUp}
             alt={'hide menu icon'}
-            width={50}
-            height={50}
+            width={40}
+            height={40}
             role={'button'}
             onClick={toggleMenu}
           />
@@ -351,6 +351,6 @@ export default function Gameoflife() {
           ))}
         </div>
       </section>
-    </>
+    </main>
   )
 }

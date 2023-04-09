@@ -2,6 +2,7 @@
   position: relative;
 
   button {
+    z-index: 2;
     position: absolute;
     top: 0.5em;
     right: 0.5em;
@@ -20,24 +21,24 @@
     transition: transform 0.3s ease-in-out;
   }
 
-  &:after {
-    position: absolute;
-    bottom: -2px;
-    background: var(--grey);
-    width: 100%;
-    height: 2px;
-    content: '';
+  svg:first-of-type {
+    border-bottom: 2px solid var(--grey);
   }
 }
 
 .fullscreen {
   position: absolute !important;
-  top: 50px;
+  top: 48px;
   left: 0;
   width: 100%;
+  z-index: 2;
 
   svg {
     border: 2px solid var(--grey);
+
+    &:first-of-type {
+      border-top: none;
+    }
   }
 }
 
@@ -51,7 +52,6 @@
   color: var(--white);
 
   p {
-    //color: var(--white);
     font-weight: bold;
   }
 

@@ -2,38 +2,34 @@ import { projectPictures } from '~images'
 
 import Image from 'next/image'
 
-import projects from '../styles/projects.module.scss'
-import utilStyles from '../styles/utils.module.scss'
+import projects from '@/styles/projects.module.scss'
 
-export default function Projects() {
+export function Projects() {
   return (
-    <>
-      <h1 className={utilStyles.header}>References:</h1>
-      <section className={utilStyles['container-750']}>
-        {projectPictures.map((picture, ind) => {
-          return (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={picture.link}
-              className={projects['picture-container']}
-              key={ind}
-              data-description={picture.description}
-            >
-              <Image
-                src={picture.src}
-                alt={picture.alt}
-                sizes={
-                  '(min-width: 750px) min(calc(50vw - 5rem), calc(500px - 5rem)), calc(100vw - 8rem)'
-                }
-                className={projects.picture}
-                priority
-              />
-              <p className={utilStyles['sr-only']}>{picture.description}</p>
-            </a>
-          )
-        })}
-      </section>
-    </>
+    <section className={projects.container}>
+      <h2>References:</h2>
+      {projectPictures.map((picture, ind) => {
+        return (
+          <a
+            target={`${picture.external ? '_blank' : ''}`}
+            href={picture.link}
+            className={projects['picture-container']}
+            key={ind}
+            data-description={picture.description}
+          >
+            <Image
+              src={picture.src}
+              alt={picture.alt}
+              sizes={
+                '(min-width: 750px) min(calc(50vw - 4rem), calc(500px - 4rem)), calc(100vw - 6rem)'
+              }
+              className={projects.picture}
+              priority
+            />
+            <p className={projects['sr-only']}>{picture.description}</p>
+          </a>
+        )
+      })}
+    </section>
   )
 }

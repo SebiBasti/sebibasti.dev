@@ -6,8 +6,7 @@ import { AppProps } from 'next/app'
 import { Courier_Prime } from 'next/font/google'
 import Head from 'next/head'
 
-import Navbar from '@/components/navbar'
-import Footer from '@/components/footer'
+import { Navbar, Footer } from '@/components'
 
 import { useCanonicalUrl } from '@/utils'
 
@@ -25,13 +24,13 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${courierPrime.className} ${layout.content}`}>
+      <div className={`${courierPrime.className} ${layout.content}`}>
         <DefaultSeo canonical={canonicalUrl} {...SEO} />
         <Navbar />
         <Component {...pageProps} />
         <Footer />
         <Analytics />
-      </main>
+      </div>
     </>
   )
 }

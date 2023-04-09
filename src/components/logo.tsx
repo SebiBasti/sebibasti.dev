@@ -2,10 +2,10 @@ import Link from 'next/link'
 
 import logo from '@/styles/logo.module.scss'
 
-export default function Logo() {
+export function Logo() {
   return (
-    <div className={logo.container}>
+    <span className={logo.container}>
       <Link href="/">sebibasti.dev</Link>
-    </div>
+    </span>
   )
 }
