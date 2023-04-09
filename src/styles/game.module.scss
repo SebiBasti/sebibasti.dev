@@ -57,7 +57,7 @@
     }
 
     p {
-      margin-top: 2rem;
+      margin: 2rem 0 1rem;
       flex-basis: 100%;
       font-weight: bold;
     }
@@ -68,12 +68,17 @@
       right: 1rem;
     }
 
-    img:first-child {
+    img:first-of-type {
       top: 1rem;
     }
 
-    img:last-child {
+    img:last-of-type {
       bottom: 1rem;
+    }
+
+    a {
+      color: var(--white);
+      text-decoration: underline;
     }
   }
 
@@ -153,7 +158,7 @@
 
       button {
         margin: 1rem 2rem;
-        width: 100px;
+        width: 6rem;
 
         &:hover {
           box-shadow: 0 0 2px var(--white);
@@ -167,10 +172,11 @@
         padding: 0;
       }
 
-      img {
-        position: absolute;
-        right: 0.8em;
-        bottom: 0.8rem;
+      small {
+        display: inline;
+        margin: 1rem 2rem 0.5rem;
+        padding-right: 4rem;
+        text-align: left;
       }
     }
   }

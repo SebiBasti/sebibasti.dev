@@ -22,6 +22,9 @@ dependencies:
   next-seo:
     specifier: ^6.0.0
     version: 6.0.0(next@13.2.4)(react-dom@18.2.0)(react@18.2.0)
+  primereact:
+    specifier: ^9.2.2
+    version: 9.2.2(@types/react@18.0.32)(primeicons@6.0.1)(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -544,6 +547,12 @@ packages:
     transitivePeerDependencies:
       - worker-loader
     dev: true
+
+  /@types/react-transition-group@4.4.5:
+    resolution: {integrity: sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA==}
+    dependencies:
+      '@types/react': 18.0.32
+    dev: false
 
   /@types/react@18.0.32:
     resolution: {integrity: sha512-gYGXdtPQ9Cj0w2Fwqg5/ak6BcK3Z15YgjSqtyDizWUfx7mQ8drs0NBUzRRsAdoFVTO8kJ8L2TL8Skm7OFPnLUw==}
@@ -1079,6 +1088,13 @@ packages:
     dependencies:
       esutils: 2.0.3
     dev: true
+
+  /dom-helpers@5.2.1:
+    resolution: {integrity: sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==}
+    dependencies:
+      '@babel/runtime': 7.21.0
+      csstype: 3.1.2
+    dev: false
 
   /dommatrix@1.0.3:
     resolution: {integrity: sha512-l32Xp/TLgWb8ReqbVJAFIvXmY7go4nTxxlWiAFyhoQw9RKEOHBZNnyGvJWqDVSPmq3Y9HlM4npqF/T6VMOXhww==}
@@ -2633,6 +2649,29 @@ packages:
     hasBin: true
     dev: true
 
+  /primeicons@6.0.1:
+    resolution: {integrity: sha512-KDeO94CbWI4pKsPnYpA1FPjo79EsY9I+M8ywoPBSf9XMXoe/0crjbUK7jcQEDHuc0ZMRIZsxH3TYLv4TUtHmAA==}
+    dev: false
+
+  /primereact@9.2.2(@types/react@18.0.32)(primeicons@6.0.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-GGkxLHOdQot5DYW9Z7vTPPaDwzjvnderzLWAXda220teNScAJNtXCIqR3QESi4c9OaNbGD4IlBlhXr++z8fjsw==}
+    peerDependencies:
+      '@types/react': ^17.0.0 || ^18.0.0
+      primeicons: ^5.0.0 || ^6.0.0
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 18.0.32
+      '@types/react-transition-group': 4.4.5
+      primeicons: 6.0.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-transition-group: 4.4.5(react-dom@18.2.0)(react@18.2.0)
+    dev: false
+
   /prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
     dependencies:
@@ -2685,6 +2724,20 @@ packages:
       tiny-warning: 1.0.3
     transitivePeerDependencies:
       - worker-loader
+    dev: false
+
+  /react-transition-group@4.4.5(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==}
+    peerDependencies:
+      react: '>=16.6.0'
+      react-dom: '>=16.6.0'
+    dependencies:
+      '@babel/runtime': 7.21.0
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-universal-interface@0.6.2(react@18.2.0)(tslib@2.5.0):

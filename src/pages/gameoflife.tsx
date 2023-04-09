@@ -3,7 +3,11 @@ import { NextSeo } from 'next-seo'
 import { useThrottledCallback } from 'use-debounce'
 import { arrowUp, expandArrows, gear, minimizeArrows } from '~/icons/'
 
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog'
+
 import Image from 'next/image'
+
+import 'primereact/resources/primereact.min.css'
 
 import {
   MouseEvent,
@@ -15,6 +19,7 @@ import {
 } from 'react'
 
 import gameStyles from '@/styles/game.module.scss'
+import Link from 'next/link'
 
 const generateEmptyGrid = (gridSize: { rows: number; cols: number }) => {
   const grid = []
@@ -132,11 +137,23 @@ export default function Gameoflife() {
           const neighbors = countNeighbors(prevGrid, i, j)
           if (prevGrid[i][j]) {
             newGrid[i][j] = neighbors === 2 || neighbors === 3
+            // Day and Night version: https://en.wikipedia.org/wiki/Day_and_Night_(cellular_automaton)
+            // newGrid[i][j] =
+            //   neighbors === 3 ||
+            //   neighbors === 4 ||
+            //   neighbors === 6 ||
+            //   neighbors === 7 ||
+            //   neighbors === 8
             if (!cellsChanged && !newGrid[i][j]) {
               cellsChanged = true
             }
           } else {
             newGrid[i][j] = neighbors === 3
+            // newGrid[i][j] =
+            //   neighbors === 3 ||
+            //   neighbors === 6 ||
+            //   neighbors === 7 ||
+            //   neighbors === 8
             if (!cellsChanged && newGrid[i][j]) {
               cellsChanged = true
             }
@@ -240,6 +257,13 @@ export default function Gameoflife() {
     setSize()
   }
 
+  const confirmResize = () => {
+    confirmDialog({
+      message: 'Resizing will reset the grid, are you sure?',
+      accept: () => toggleFullscreen()
+    })
+  }
+
   // This is needed because removeEventListener can not remove void functions
   // e.g. window.removeEventListener('mousedown', () => handleMouseDown(true)) will not work
   // because it can't find the reference of that function
@@ -303,13 +327,14 @@ export default function Gameoflife() {
             hidden ? gameStyles.hidden : ''
           }`}
         >
+          <ConfirmDialog />
           <Image
             src={fullscreen ? minimizeArrows : expandArrows}
             alt={'toggle fullscreen'}
             width={40}
             height={40}
             role={'button'}
-            onClick={toggleFullscreen}
+            onClick={confirmResize}
           />
           <button onClick={handleStartStopClick}>
             {isRunning ? 'Stop' : 'Start'}
@@ -325,6 +350,16 @@ export default function Gameoflife() {
             role={'button'}
             onClick={toggleMenu}
           />
+          <small>
+            <strong>Inspired by</strong>
+            <br />
+            <Link
+              href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
+              target="_blank"
+            >
+              Conway&apos;s Game&nbsp;of&nbsp;Life
+            </Link>
+          </small>
         </div>
         <div
           className={gameStyles['game-field']}
