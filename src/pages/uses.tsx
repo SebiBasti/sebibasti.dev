@@ -58,6 +58,12 @@ export default function Uses() {
         <li>Browser: Firefox Developer Edition</li>
         <li>Terminal: iTerm</li>
       </ul>
+      <small>
+        Inspired by:&nbsp;
+        <Link href="https://uses.tech/" target="_blank">
+          https://uses.tech/
+        </Link>
+      </small>
     </main>
   )
 }
