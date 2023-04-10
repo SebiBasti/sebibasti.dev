@@ -35,4 +35,4 @@ yarn-error.log*
 /next-env.d.ts
 
 /src/utils/text_to_svg.js
-/graveyard/*
+/graveyard
