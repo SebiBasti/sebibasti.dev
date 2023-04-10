@@ -1,8 +1,8 @@
-import { profilePicture } from '~images'
-
 import Image from 'next/image'
 
 import { Projects } from '@/components'
+import { profilePicture } from '~/images'
+
 import home from '@/styles/home.module.scss'
 
 export default function Home() {

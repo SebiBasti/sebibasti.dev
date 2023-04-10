@@ -1,6 +1,6 @@
-import { projectPictures } from '~images'
-
 import Image from 'next/image'
+
+import { projectPictures } from '~/images'
 
 import projects from '@/styles/projects.module.scss'
 

@@ -11,37 +11,6 @@ body {
   font-family: 'Courier Prime', monospace;
 }
 
-// prime react colors:
-// duplicate code warning is unavoidable here
-// primereact does not support overwriting css variables yet
-.p-dialog-mask {
-  background-color: var(--black-transparent) !important;
-  padding: 2rem;
-  text-align: center;
-
-  .p-dialog-footer {
-    align-self: center;
-
-    .p-button {
-      cursor: pointer;
-      margin: 2em;
-      box-shadow: 0 0 2px var(--white);
-      border: none;
-      border-radius: 0.2em;
-      background: var(--black);
-      padding: 1em;
-      min-width: 60.5px;
-      color: var(--white);
-      font-weight: bold;
-
-      &:hover {
-        box-shadow: 0 0 2px var(--grey);
-        color: var(--grey);
-      }
-    }
-  }
-}
-
 // css reset
 *,
 *::before,

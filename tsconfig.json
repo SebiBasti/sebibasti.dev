@@ -3,8 +3,6 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "~images/*": ["public/images/*"],
-      "~images": ["public/images"],
       "~/*": ["public/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],

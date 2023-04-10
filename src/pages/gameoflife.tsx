@@ -1,13 +1,5 @@
-import gameOfLifeSEO from '@/config/gameoflife-seo.config'
-import { NextSeo } from 'next-seo'
-import { useThrottledCallback } from 'use-debounce'
-import { arrowUp, expandArrows, gear, minimizeArrows } from '~/icons/'
-
-import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog'
-
 import Image from 'next/image'
-
-import 'primereact/resources/primereact.min.css'
+import Link from 'next/link'
 
 import {
   MouseEvent,
@@ -18,8 +10,18 @@ import {
   useState
 } from 'react'
 
+import { NextSeo } from 'next-seo'
+import PrimeReact from 'primereact/api'
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog'
+import 'primereact/resources/primereact.min.css'
+import { useThrottledCallback } from 'use-debounce'
+
+import gameOfLifeSEO from '@/config/gameoflife-seo.config'
+
+import { arrowUp, expandArrows, gear, minimizeArrows } from '~/icons/'
+
 import gameStyles from '@/styles/game.module.scss'
-import Link from 'next/link'
+import overrideStyles from '@/styles/overrides/primereact.module.scss'
 
 const generateEmptyGrid = (gridSize: { rows: number; cols: number }) => {
   const grid = []
@@ -258,8 +260,12 @@ export default function Gameoflife() {
   }
 
   const confirmResize = () => {
+    // overwrite the default container to actual position
+    PrimeReact.appendTo = 'self'
     confirmDialog({
       message: 'Resizing will reset the grid, are you sure?',
+      resizable: false,
+      draggable: false,
       accept: () => toggleFullscreen()
     })
   }
@@ -305,8 +311,11 @@ export default function Gameoflife() {
   }, [handleResize, isRunning])
 
   return (
-    <main className={gameStyles['layout-shift']}>
+    <main
+      className={`${gameStyles['layout-shift']} ${overrideStyles['confirm-dialog']}`}
+    >
       <NextSeo {...gameOfLifeSEO} />
+      <ConfirmDialog />
       <section
         className={`${gameStyles.container} ${
           loading ? gameStyles.loading : ''
@@ -327,7 +336,6 @@ export default function Gameoflife() {
             hidden ? gameStyles.hidden : ''
           }`}
         >
-          <ConfirmDialog />
           <Image
             src={fullscreen ? minimizeArrows : expandArrows}
             alt={'toggle fullscreen'}

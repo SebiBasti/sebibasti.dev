@@ -1,0 +1,36 @@
+.confirm-dialog {
+  [class~='p-dialog-mask'] {
+    background-color: var(--black-transparent) !important;
+    padding: 2rem;
+    text-align: center;
+
+    [class~='p-dialog-footer'] {
+      align-self: center;
+
+      // duplicate code warning is unavoidable here
+      // -> no direct access to the button for now
+      [class~='p-button'] {
+        cursor: pointer;
+        margin: 2em;
+        box-shadow: 0 0 2px var(--white);
+        border: none;
+        border-radius: 0.2em;
+        background: var(--black);
+        padding: 1em;
+        min-width: 60.5px;
+        color: var(--white);
+        font-weight: bold;
+
+        &:hover {
+          box-shadow: 0 0 2px var(--grey);
+          color: var(--grey);
+        }
+
+        // deactivate blue focus color
+        &:focus-visible {
+          outline: inherit;
+        }
+      }
+    }
+  }
+}
