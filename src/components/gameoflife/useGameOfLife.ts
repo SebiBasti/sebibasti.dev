@@ -9,7 +9,6 @@ export const useGameOfLife = () => {
     runningRef,
     gameFieldRef,
     handleTouchStart,
-    runSimulation,
     handleStartStopClick,
     setSize,
     handleResize,
