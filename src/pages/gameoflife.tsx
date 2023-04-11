@@ -1,13 +1,11 @@
+import cn from 'classnames'
 import { NextSeo } from 'next-seo'
-import { ConfirmDialog } from 'primereact/confirmdialog'
-import 'primereact/resources/primereact.min.css'
 
 import { useGameOfLife } from '@/components/gameoflife'
 
 import gameOfLifeSEO from '@/config/gameoflife-seo.config'
 
 import gameStyles from '@/styles/game.module.scss'
-import overrideStyles from '@/styles/overrides/primereact.module.scss'
 
 export default function Gameoflife() {
   const {
@@ -20,16 +18,19 @@ export default function Gameoflife() {
 
   useInitializedGame()
 
+  console.log({ gameStyles })
+
   return (
     <main
-      className={`${gameStyles['layout-shift']} ${overrideStyles['confirm-dialog']}`}
+      className={cn(gameStyles['layout-shift'], gameStyles['confirm-dialog'])}
     >
       <NextSeo {...gameOfLifeSEO} />
-      <ConfirmDialog />
       <section
-        className={`${gameStyles.container} ${
-          gameState.isLoading ? gameStyles.loading : ''
-        } ${gameState.isFullscreen ? gameStyles.fullscreen : ''}`}
+        className={cn(
+          gameStyles.container,
+          { [gameStyles.loading]: gameState.isLoading },
+          { [gameStyles.fullscreen]: gameState.isFullscreen }
+        )}
         draggable="false"
       >
         {gameControls}
@@ -42,17 +43,17 @@ export default function Gameoflife() {
             handleTouchStart(event, gameState.isMouseDown)
           }
         >
-          {gameState.grid.map((rows, i) => (
-            <div key={i} className={gameStyles.row} id={`${i}`}>
-              {rows.map((col, j) => (
+          {gameState.grid.map((rows, rowindex) => (
+            <div key={rowindex} className={gameStyles.row} id={`${rowindex}`}>
+              {rows.map((cell, cellIndex) => (
                 <div
-                  key={`${i}-${j}`}
-                  id={`${i}-${j}`}
-                  data-row={i}
-                  data-cell={j}
-                  className={`${gameStyles.cell} ${
-                    gameState.grid[i][j] ? gameStyles.active : ''
-                  }`}
+                  key={`${rowindex}-${cellIndex}`}
+                  id={`${rowindex}-${cellIndex}`}
+                  data-row={rowindex}
+                  data-cell={cellIndex}
+                  className={cn(gameStyles.cell, {
+                    [gameStyles.active]: cell
+                  })}
                 />
               ))}
             </div>

@@ -1,3 +1,5 @@
+@import './overrides/primereact.module.scss';
+
 .no-scroll-select {
   overflow: hidden;
   user-select: none;
@@ -59,15 +61,15 @@
     }
 
     p {
-      margin: 2rem 0 1rem;
       flex-basis: 100%;
+      margin: 2rem 0 1rem;
       font-weight: bold;
     }
 
     img {
       position: absolute;
-      cursor: pointer;
       right: 1rem;
+      cursor: pointer;
     }
 
     img:first-of-type {

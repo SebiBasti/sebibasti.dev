@@ -1,6 +1,6 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react'
 
-import { GameState } from '@/components/gameoflife/useGameState'
+import { GameState } from '@/components/gameoflife'
 
 export const useHandleStartStopClick =
   (
@@ -9,10 +9,10 @@ export const useHandleStartStopClick =
     runSimulation: Function
   ) =>
   (isRunning: boolean) => {
-    setGameState(
-      (prevGameState) =>
-        ({ ...prevGameState, isRunning: !prevGameState.isRunning } as GameState)
-    )
+    setGameState((prevGameState) => ({
+      ...prevGameState,
+      isRunning: !prevGameState.isRunning
+    }))
     if (isRunning) {
       runningRef.current = false
     } else {

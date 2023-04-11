@@ -6,8 +6,8 @@ import {
   useRef
 } from 'react'
 
+import { GameState } from '@/components/gameoflife'
 import { generateEmptyGrid } from '@/components/gameoflife/generateGrid'
-import { GameState } from '@/components/gameoflife/useGameState'
 
 export const useSetSize = (
   runningRef: MutableRefObject<boolean>,
@@ -26,17 +26,14 @@ export const useSetSize = (
         const cols = Math.floor(gameField.clientWidth / 19)
         if (rows !== initialSize.rows || cols !== initialSize.cols) {
           initialSizeRef.current = { rows, cols }
-          setGameState(
-            (prevGameState: GameState) =>
-              ({
-                ...prevGameState,
-                gridSize: {
-                  rows: rows,
-                  cols: cols
-                },
-                grid: generateEmptyGrid({ rows: rows, cols: cols })
-              } as GameState)
-          )
+          setGameState((prevGameState) => ({
+            ...prevGameState,
+            gridSize: {
+              rows: rows,
+              cols: cols
+            },
+            grid: generateEmptyGrid({ rows: rows, cols: cols })
+          }))
         }
       }
     }, 100)

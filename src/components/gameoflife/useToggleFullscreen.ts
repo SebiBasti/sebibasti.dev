@@ -1,17 +1,14 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { GameState } from '@/components/gameoflife/useGameState'
+import { GameState } from '@/components/gameoflife'
 
 export const useToggleFullscreen =
   (setGameState: Dispatch<SetStateAction<GameState>>, setSize: () => void) =>
   () => {
-    setGameState(
-      (prevGameState: GameState) =>
-        ({
-          ...prevGameState,
-          isFullscreen: !prevGameState.isFullscreen,
-          isRunning: false
-        } as GameState)
-    )
+    setGameState((prevGameState) => ({
+      ...prevGameState,
+      isFullscreen: !prevGameState.isFullscreen,
+      isRunning: false
+    }))
     setSize()
   }

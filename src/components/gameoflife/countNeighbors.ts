@@ -1,4 +1,4 @@
-import { GameState } from '@/components/gameoflife/useGameState'
+import { GameState } from '@/components/gameoflife'
 
 export const countNeighbors = (
   grid: boolean[][],

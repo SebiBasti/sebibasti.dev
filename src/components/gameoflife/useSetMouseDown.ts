@@ -9,23 +9,17 @@ export const useSetMouseDown = (
   setGameState: Dispatch<SetStateAction<GameState>>
 ) => {
   const setMouseDownTrue = useCallback(() => {
-    setGameState(
-      (prevGameState: GameState) =>
-        ({
-          ...prevGameState,
-          isMouseDown: true
-        } as GameState)
-    )
+    setGameState((prevGameState) => ({
+      ...prevGameState,
+      isMouseDown: true
+    }))
   }, [setGameState])
 
   const setMouseDownFalse = useCallback(() => {
-    setGameState(
-      (prevGameState: GameState) =>
-        ({
-          ...prevGameState,
-          isMouseDown: false
-        } as GameState)
-    )
+    setGameState((prevGameState) => ({
+      ...prevGameState,
+      isMouseDown: false
+    }))
   }, [setGameState])
 
   return [setMouseDownTrue, setMouseDownFalse]

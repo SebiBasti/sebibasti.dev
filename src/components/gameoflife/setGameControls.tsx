@@ -3,6 +3,9 @@ import Link from 'next/link'
 
 import { Dispatch, SetStateAction } from 'react'
 
+import cn from 'classnames'
+import { ConfirmDialog } from 'primereact/confirmdialog'
+import 'primereact/resources/primereact.min.css'
 import { arrowUp, expandArrows, gear, minimizeArrows } from '~/icons'
 
 import { GameState, golUtils } from '@/components/gameoflife'
@@ -17,21 +20,22 @@ export const setGameControls = (
 ) => {
   return (
     <>
+      <ConfirmDialog />
       <Image
         src={gear}
         alt={'show settings icon'}
         width={40}
         height={40}
-        className={`${gameStyles.toggle} ${
-          !gameState.isHidden ? gameStyles.hidden : ''
-        }`}
+        className={cn(gameStyles.toggle, {
+          [gameStyles.hidden]: !gameState.isHidden
+        })}
         role={'button'}
         onClick={() => golUtils.handleMenuToggle(setGameState)}
       />
       <div
-        className={`${gameStyles.controls} ${
-          gameState.isHidden ? gameStyles.hidden : ''
-        }`}
+        className={cn(gameStyles.controls, {
+          [gameStyles.hidden]: gameState.isHidden
+        })}
       >
         <Image
           src={gameState.isFullscreen ? minimizeArrows : expandArrows}

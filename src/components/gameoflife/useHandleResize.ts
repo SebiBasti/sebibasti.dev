@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useCallback } from 'react'
 
-import { GameState } from '@/components/gameoflife/useGameState'
+import { GameState } from '@/components/gameoflife'
 
 export const useHandleResize = (
   setGameState: Dispatch<SetStateAction<GameState>>,
@@ -8,12 +8,9 @@ export const useHandleResize = (
 ) =>
   useCallback(() => {
     setSize()
-    setGameState(
-      (prevGameState: GameState) =>
-        ({
-          ...prevGameState,
-          isRunning: false,
-          generation: 0
-        } as GameState)
-    )
+    setGameState((prevGameState) => ({
+      ...prevGameState,
+      isRunning: false,
+      generation: 0
+    }))
   }, [setGameState, setSize])

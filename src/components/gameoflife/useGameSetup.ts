@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import * as GameOfLife from '@/components/gameoflife/index'
+import * as GameOfLife from '@/components/gameoflife'
 
 export const useGameSetup = () => {
   const [gameState, setGameState] = GameOfLife.useGameState()

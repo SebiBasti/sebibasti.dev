@@ -19,7 +19,9 @@
     "@react-hook/passive-layout-effect": "^1.2.1",
     "@react-hook/resize-observer": "^1.2.6",
     "@react-hook/size": "^2.1.2",
+    "@types/react": "^18.0.32",
     "@vercel/analytics": "^0.1.11",
+    "classnames": "^2.3.2",
     "next": "13.3.0",
     "next-seo": "^6.0.0",
     "primereact": "^9.2.2",
@@ -35,7 +37,6 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/node": "^18.15.11",
-    "@types/react": "^18.0.32",
     "@types/react-dom": "^18.0.11",
     "@types/react-pdf": "^6.2.0",
     "eslint": "8.37.0",
