@@ -1,34 +1,55 @@
 .confirm-dialog {
   [class~='p-dialog-mask'] {
-    background-color: var(--black-transparent) !important;
+    background-color: var(--black-transparent);
     padding: 2rem;
     text-align: center;
 
-    [class~='p-dialog-footer'] {
-      align-self: center;
+    [class~='p-dialog'] {
+      background: var(--black);
+      border: none;
+      border-radius: 0.2em;
+      box-shadow: 0 0 2px var(--white);
+      padding: 2em;
+      text-align: center;
 
-      // duplicate code warning is unavoidable here
-      // -> no direct access to the button for now
-      [class~='p-button'] {
-        cursor: pointer;
-        margin: 2em;
-        box-shadow: 0 0 2px var(--white);
-        border: none;
-        border-radius: 0.2em;
-        background: var(--black);
-        padding: 1em;
-        min-width: 60.5px;
+      [class~='p-dialog-header'] {
+        display: none;
+      }
+
+      [class~='p-dialog-content'] {
         color: var(--white);
+        font-size: 1.2em;
         font-weight: bold;
+        margin: 1em 0;
+      }
 
-        &:hover {
-          box-shadow: 0 0 2px var(--grey);
-          color: var(--grey);
-        }
+      [class~='p-dialog-footer'] {
+        align-self: center;
 
-        // deactivate blue focus color
-        &:focus-visible {
-          outline: inherit;
+        // duplicate code warning is unavoidable here
+        // -> no direct access to the button for now
+        //noinspection DuplicatedCode
+        [class~='p-button'] {
+          cursor: pointer;
+          margin: 2em;
+          box-shadow: 0 0 2px var(--white);
+          border: none;
+          border-radius: 0.2em;
+          background: var(--black);
+          padding: 1em;
+          min-width: 60.5px;
+          color: var(--white);
+          font-weight: bold;
+
+          &:hover {
+            box-shadow: 0 0 2px var(--grey);
+            color: var(--grey);
+          }
+
+          // deactivate blue focus color
+          &:focus-visible {
+            outline: inherit;
+          }
         }
       }
     }

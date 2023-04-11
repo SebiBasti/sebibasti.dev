@@ -38,6 +38,8 @@
     overflow: hidden;
     text-align: center;
 
+    // see overrides/primereact.module.scss
+    //noinspection DuplicatedCode
     button {
       cursor: pointer;
       margin: 2em;
