@@ -5,10 +5,9 @@
     text-align: center;
 
     [class~='p-dialog'] {
-      background: var(--black);
-      border: none;
+      border: 2px solid var(--grey);
       border-radius: 0.2em;
-      box-shadow: 0 0 2px var(--white);
+      background: var(--light-black);
       padding: 2em;
       text-align: center;
 
@@ -17,10 +16,8 @@
       }
 
       [class~='p-dialog-content'] {
+        margin-bottom: 2em;
         color: var(--white);
-        font-size: 1.2em;
-        font-weight: bold;
-        margin: 1em 0;
       }
 
       [class~='p-dialog-footer'] {
@@ -31,15 +28,18 @@
         //noinspection DuplicatedCode
         [class~='p-button'] {
           cursor: pointer;
-          margin: 2em;
           box-shadow: 0 0 2px var(--white);
           border: none;
           border-radius: 0.2em;
           background: var(--black);
           padding: 1em;
-          min-width: 60.5px;
+          min-width: 4rem;
           color: var(--white);
           font-weight: bold;
+
+          &:first-child {
+            margin-right: 3rem;
+          }
 
           &:hover {
             box-shadow: 0 0 2px var(--grey);

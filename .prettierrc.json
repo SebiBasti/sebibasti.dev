@@ -1,5 +1,4 @@
 {
-  "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
     "^next/(.*)?$",
     "^react$",
@@ -14,6 +13,12 @@
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-css-order",
+    "prettier-plugin-packagejson",
+    "prettier-plugin-sort-json"
+  ],
   "semi": false,
   "singleQuote": true,
   "tabWidth": 2,

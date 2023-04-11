@@ -1,18 +1,21 @@
 {
   "name": "sebibasti.dev",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "dev": "next dev",
     "lint": "next lint",
     "prepare": "husky install",
+    "start": "next start",
     "test": "echo 'Error: no tests specified... running prettier'"
   },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
+  },
   "dependencies": {
-    "@next/swc-darwin-arm64": "^13.3.0",
     "@formkit/auto-animate": "^1.0.0-beta.6",
+    "@next/swc-darwin-arm64": "^13.3.0",
     "@react-hook/passive-layout-effect": "^1.2.1",
     "@react-hook/resize-observer": "^1.2.6",
     "@react-hook/size": "^2.1.2",
@@ -46,8 +49,5 @@
     "prettier-plugin-packagejson": "^2.4.3",
     "prettier-plugin-sort-json": "^1.0.0",
     "typescript": "^5.0.3"
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
   }
 }
