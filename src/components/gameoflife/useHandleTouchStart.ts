@@ -99,6 +99,7 @@ export const useHandleTouchStart = (
       } else if (!mouseDown || touchOver) {
         setIsActive(null)
         setCurrentChildElement(null)
+        setHasMouseMoveEvent(false)
       }
     },
     10
