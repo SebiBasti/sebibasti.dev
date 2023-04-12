@@ -95,7 +95,7 @@ export const useHandleTouchStart = (
       } else if (event.type === 'click' && !hasMouseMoveEvent) {
         handleCellClick(row, cell)
 
-        // reset isActive and currentChildElement if mouse is not down anymore/touch is over
+        // reset isActive, currentChildElement and setHasMouseMoveEvent if mouse is not down anymore/touch is over
       } else if (!mouseDown || touchOver) {
         setIsActive(null)
         setCurrentChildElement(null)
