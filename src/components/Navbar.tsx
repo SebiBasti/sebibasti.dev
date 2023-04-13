@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-import navbar from '@/styles/navbar.module.scss'
-
 import { Logo } from '@/components'
+
+import navbar from '@/styles/navbar.module.scss'
 
 export function Navbar() {
   return (

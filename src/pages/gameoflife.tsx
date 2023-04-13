@@ -13,7 +13,7 @@ export default function Gameoflife() {
     gameState,
     gameFieldRef,
     handleTouchStart,
-    gameControls
+    InitializedGameControls
   } = useGameOfLife()
 
   useInitializedGame()
@@ -31,7 +31,7 @@ export default function Gameoflife() {
         )}
         draggable="false"
       >
-        {gameControls}
+        {InitializedGameControls}
         <div
           className={gameStyles['game-field']}
           ref={gameFieldRef}

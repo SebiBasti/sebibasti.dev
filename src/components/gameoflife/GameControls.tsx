@@ -12,7 +12,7 @@ import { GameState, golUtils } from '@/components/gameoflife'
 
 import gameStyles from '@/styles/game.module.scss'
 
-export const setGameControls = (
+export const GameControls = (
   gameState: GameState,
   setGameState: Dispatch<SetStateAction<GameState>>,
   toggleFullscreen: () => void,

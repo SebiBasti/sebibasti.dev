@@ -1,6 +1,8 @@
-import { useGameSetup } from '@/components/gameoflife'
-import { useInitializeGame } from '@/components/gameoflife'
-import { setGameControls } from '@/components/gameoflife'
+import {
+  GameControls,
+  useGameSetup,
+  useInitializeGame
+} from '@/components/gameoflife'
 
 export const useGameOfLife = () => {
   const {
@@ -28,7 +30,7 @@ export const useGameOfLife = () => {
       setMouseDownFalse
     )
 
-  const gameControls = setGameControls(
+  const InitializedGameControls = GameControls(
     gameState,
     setGameState,
     toggleFullscreen,
@@ -43,6 +45,6 @@ export const useGameOfLife = () => {
     toggleFullscreen,
     handleStartStopClick,
     handleTouchStart,
-    gameControls
+    InitializedGameControls
   }
 }
