@@ -65,7 +65,6 @@ export const useRunSimulation = (
 
       return { ...prevGameState, grid: newGrid, generation: newGeneration }
     })
-    console.log('running simulation')
     setTimeout(runSimulation, 100)
   }
 

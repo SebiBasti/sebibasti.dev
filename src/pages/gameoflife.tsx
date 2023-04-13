@@ -18,8 +18,6 @@ export default function Gameoflife() {
 
   useInitializedGame()
 
-  console.log({ gameStyles })
-
   return (
     <main
       className={cn(gameStyles['layout-shift'], gameStyles['confirm-dialog'])}
