@@ -1,7 +1,10 @@
-import usesStyle from '@/styles/uses.module.scss'
 import Link from 'next/link'
+
 import { NextSeo } from 'next-seo'
+
 import usesSEO from '@/config/uses-seo.config'
+
+import usesStyle from '@/styles/uses.module.scss'
 
 export default function Uses() {
   return (
@@ -34,9 +37,7 @@ export default function Uses() {
       <h2>Software & Fonts</h2>
       <ul>
         <li>
-          IDE: I started with Sublime and then moved to RubyMine and will
-          probably soon switch to WebStorm (since I mainly work with Typescript
-          and React now). For my work at{' '}
+          IDE: I started with Sublime and then moved to RubyMine. For my work at{' '}
           <Link
             href="https://www.lewagon.com/berlin"
             target="_blank"
@@ -48,7 +49,7 @@ export default function Uses() {
         </li>
         <li>
           Plugins & Theme: Material Theme UI (Material Darker), Atom Material
-          Icons, Rainbow Brackets
+          Icons, Rainbow Brackets, AceJump, CodeGlance, GitHub Copilot, WakaTime
         </li>
         <li>
           Font:{' '}
