@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Running pre-commit hooks..."
+pnpm lint-staged
+# deactivated until tests are implemented
+# echo "Running tests..."
+# pnpm test-commit
