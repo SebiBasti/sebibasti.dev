@@ -30,7 +30,6 @@ yarn-error.log*
 .env.production.local
 
 .idea/*
-.husky
 /env.local
 /next-env.d.ts
 
