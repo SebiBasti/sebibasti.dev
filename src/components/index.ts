@@ -1,4 +1,5 @@
 export * from './Footer'
+export * from './Layout'
 export * from './Logo'
 export * from './Navbar'
 // export * from './pdfViewer' excluded because of React error: SyntaxError: Cannot use import statement outside a module
