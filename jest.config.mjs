@@ -12,7 +12,11 @@ const config = {
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 
-  testEnvironment: 'jest-environment-jsdom'
+  testEnvironment: 'jest-environment-jsdom',
+  // needed to mock react-pdf: https://github.com/wojtekmaj/react-pdf/issues/714
+  moduleNameMapper: {
+    'react-pdf/dist/esm/entry.webpack5': 'react-pdf'
+  }
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
