@@ -14,14 +14,14 @@ interface customImageType {
 
 const projectWandgestaltung: customImageType = {
   link: 'https://www.wandgestaltung-reinl.de/',
-  alt: 'picture Wandgestaltung Reinl',
+  alt: 'project picture Wandgestaltung Reinl',
   description: 'website\u00A0build\u00A0with Next.js\u00A0&\u00A0TypeScript',
   src: wandgestaltung,
   external: true
 }
 const projectGameOfLife: customImageType = {
   link: '/gameoflife',
-  alt: 'picture project game of life',
+  alt: 'project picture project game of life',
   description:
     "Conway's\u00A0Game\u00A0of\u00A0Life build\u00A0with\u00A0Next.js &\u00A0Typescript",
   src: gameOfLife,
