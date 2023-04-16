@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useDebugValue, useState } from 'react'
 
 export type GameState = {
   gridSize: { rows: number; cols: number }
@@ -25,6 +25,9 @@ export const useGameState = (): [
     isFullscreen: false,
     isMouseDown: false
   })
+
+  // turn on when necessary for debugging
+  // useDebugValue(gameState)
 
   return [gameState, setGameState]
 }
