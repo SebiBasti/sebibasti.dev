@@ -1,15 +1,24 @@
 import { Courier_Prime } from 'next/font/google'
 import Head from 'next/head'
 
-import { PropsWithChildren } from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 
-import { Footer, Navbar } from '@/components'
+import { Footer, Mouselight, Navbar } from '@/components'
+import { isSafari } from 'react-device-detect'
 
 import layout from '@/styles/layout.module.scss'
 
 const courierPrime = Courier_Prime({ weight: '400', subsets: ['latin'] })
 
 export function Layout({ children }: PropsWithChildren) {
+  const [mouseLight, setMouseLight] = useState<JSX.Element | null>(null)
+
+  useEffect(() => {
+    if (!isSafari) {
+      setMouseLight(<Mouselight />)
+    }
+  }, [])
+
   return (
     <>
       <Head>
@@ -21,6 +30,7 @@ export function Layout({ children }: PropsWithChildren) {
         {children}
         <Footer />
       </div>
+      {mouseLight}
     </>
   )
 }
