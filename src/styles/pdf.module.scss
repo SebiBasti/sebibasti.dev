@@ -21,7 +21,7 @@
     transition: transform 0.3s ease-in-out;
   }
 
-  svg:first-of-type {
+  canvas:first-of-type {
     border-bottom: 2px solid var(--grey);
   }
 }
@@ -34,7 +34,7 @@
   width: 100vw;
   overflow: scroll;
 
-  svg {
+  canvas {
     border: 2px solid var(--grey);
 
     &:first-of-type {

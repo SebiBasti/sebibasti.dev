@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 import { useWidth } from '@/utils'
+import { isMobile } from 'react-device-detect'
 import { DocumentProps } from 'react-pdf'
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css'
 import 'react-pdf/dist/esm/Page/TextLayer.css'
@@ -67,11 +68,12 @@ export default function PDFViewer(props: DocumentProps) {
       {buttonVisible ? expandButton : null}
       {Array.from(new Array(numPages), (el, index) => (
         <Page
-          renderMode={'svg'}
+          // renderMode={'svg'}
           width={width}
           key={`page_${index + 1}`}
           pageNumber={index + 1}
           className={pdf.page}
+          devicePixelRatio={isMobile ? 4 : 1}
           error={
             <div className={pdf.container}>
               <p>An error occurred!</p>
@@ -80,8 +82,8 @@ export default function PDFViewer(props: DocumentProps) {
               </a>
             </div>
           }
-          renderAnnotationLayer={false}
-          renderTextLayer={false}
+          renderAnnotationLayer={true}
+          renderTextLayer={true}
         />
       ))}
     </Document>
