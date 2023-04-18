@@ -51,7 +51,7 @@ export default function Cv() {
         </Link>
       </button>
       {buttonVisible ? expandButton : null}
-      <Image src={page1} alt="cv page 1" className={cvStyles.page} />
+      <Image src={page1} alt="cv page 1" className={cvStyles.page} priority />
       <Image src={page2} alt="cv page 2" className={cvStyles.page} />
     </main>
   )
