@@ -67,7 +67,7 @@ export default function PDFViewer(props: DocumentProps) {
       {buttonVisible ? expandButton : null}
       {Array.from(new Array(numPages), (el, index) => (
         <Page
-          // renderMode={'svg'}
+          renderMode={'svg'}
           width={width}
           key={`page_${index + 1}`}
           pageNumber={index + 1}
