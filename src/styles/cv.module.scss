@@ -1,0 +1,53 @@
+.container {
+  background: var(--white);
+
+  button:first-of-type {
+    padding: 0;
+  }
+  .button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 2;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 0 2px var(--black);
+    border: none;
+    background: var(--black-transparent);
+    padding: 0.25rem;
+    aspect-ratio: 1;
+    width: clamp(1.25rem, 7vw, 2rem);
+  }
+
+  .download {
+    right: calc(clamp(1.25rem, 7vw, 2rem) + 1rem);
+  }
+
+  .rotated {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .page {
+    border-bottom: 2px solid var(--grey);
+    width: 100%;
+  }
+}
+
+.fullscreen {
+  position: absolute !important;
+  top: 0;
+  left: calc(-2rem - 2px);
+  z-index: 2;
+  box-shadow: 0 0 0 2px var(--black);
+  background: var(--white);
+  padding: 0 2px;
+  width: 100vw;
+  overflow: scroll;
+
+  .page {
+    margin-bottom: 2px;
+    box-shadow: 0 0 0 2px var(--grey);
+    border: none;
+  }
+}

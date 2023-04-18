@@ -14,7 +14,6 @@
     "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
-    "@formkit/auto-animate": "^1.0.0-beta.6",
     "@next/swc-darwin-arm64": "^13.3.0",
     "@react-hook/passive-layout-effect": "^1.2.1",
     "@react-hook/resize-observer": "^1.2.6",
@@ -28,7 +27,6 @@
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
-    "react-pdf": "^6.2.2",
     "react-use": "^17.4.0",
     "sass": "^1.59.3",
     "text-to-svg": "^3.1.5",
