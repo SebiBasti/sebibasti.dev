@@ -1,14 +1,13 @@
-import { DocumentProps } from 'react-pdf'
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css'
-import 'react-pdf/dist/esm/Page/TextLayer.css'
-import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5'
-import { expandIcon } from '~/icons'
-
 import Image from 'next/image'
 
 import { useEffect, useRef, useState } from 'react'
 
 import { useWidth } from '@/utils'
+import { DocumentProps } from 'react-pdf'
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css'
+import 'react-pdf/dist/esm/Page/TextLayer.css'
+import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5'
+import { expandIcon } from '~/icons'
 
 import pdf from '@/styles/pdf.module.scss'
 
@@ -68,7 +67,7 @@ export default function PDFViewer(props: DocumentProps) {
       {buttonVisible ? expandButton : null}
       {Array.from(new Array(numPages), (el, index) => (
         <Page
-          renderMode={'svg'}
+          // renderMode={'svg'}
           width={width}
           key={`page_${index + 1}`}
           pageNumber={index + 1}
@@ -81,8 +80,8 @@ export default function PDFViewer(props: DocumentProps) {
               </a>
             </div>
           }
-          renderAnnotationLayer={true}
-          renderTextLayer={true}
+          renderAnnotationLayer={false}
+          renderTextLayer={false}
         />
       ))}
     </Document>
