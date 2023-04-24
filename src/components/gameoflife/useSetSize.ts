@@ -14,7 +14,7 @@ export const useSetSize = (
   gameFieldRef: MutableRefObject<HTMLDivElement | null>,
   setGameState: Dispatch<SetStateAction<GameState>>
 ) => {
-  const initialSizeRef = useRef({ rows: 0, cols: 0 })
+  const initialSizeRef = useRef({ rows: 0, cells: 0 })
   return useCallback(() => {
     runningRef.current = false
     const gameField = gameFieldRef.current
@@ -23,16 +23,16 @@ export const useSetSize = (
     setTimeout(() => {
       if (gameField) {
         const rows = Math.floor(gameField.clientHeight / 19)
-        const cols = Math.floor(gameField.clientWidth / 19)
-        if (rows !== initialSize.rows || cols !== initialSize.cols) {
-          initialSizeRef.current = { rows, cols }
+        const cells = Math.floor(gameField.clientWidth / 19)
+        if (rows !== initialSize.rows || cells !== initialSize.cells) {
+          initialSizeRef.current = { rows, cells }
           setGameState((prevGameState) => ({
             ...prevGameState,
             gridSize: {
               rows: rows,
-              cols: cols
+              cells: cells
             },
-            grid: generateEmptyGrid({ rows: rows, cols: cols })
+            grid: generateEmptyGrid({ rows: rows, cells: cells })
           }))
         }
       }

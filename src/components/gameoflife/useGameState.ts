@@ -1,7 +1,12 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 
+export type GridSize = {
+  rows: number
+  cells: number
+}
+
 export type GameState = {
-  gridSize: { rows: number; cols: number }
+  gridSize: GridSize
   grid: boolean[][]
   isRunning: boolean
   generation: number
@@ -16,7 +21,7 @@ export const useGameState = (): [
   Dispatch<SetStateAction<GameState>>
 ] => {
   const [gameState, setGameState] = useState<GameState>({
-    gridSize: { rows: 0, cols: 0 },
+    gridSize: { rows: 0, cells: 0 },
     grid: [],
     isRunning: false,
     generation: 0,

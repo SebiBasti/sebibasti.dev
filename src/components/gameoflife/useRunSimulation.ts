@@ -24,7 +24,7 @@ export const useRunSimulation = (
       let cellsChanged = false
 
       prevGrid.forEach((row, prevRowInd) => {
-        row.forEach((col, prevCellInd) => {
+        row.forEach((cell, prevCellInd) => {
           const neighbors = countNeighbors(
             prevGrid,
             gameState,
@@ -50,7 +50,7 @@ export const useRunSimulation = (
       })
 
       // check if there are any live cells left
-      const hasLiveCells = newGrid.some((row) => row.some((col) => col))
+      const hasLiveCells = newGrid.some((row) => row.some((cell) => cell))
       // if there are live cells, increment the generation
       // this also increments the generation if the game stopped before and the user clicks in new cells
       // kinda hard to prevent that from happening, but who cares

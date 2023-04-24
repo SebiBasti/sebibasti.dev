@@ -1,18 +1,17 @@
-export const generateEmptyGrid = (gridSize: { rows: number; cols: number }) => {
+import { GridSize } from '@/components/gameoflife/useGameState'
+
+export const generateEmptyGrid = (gridSize: GridSize) => {
   const grid = []
   for (let i = 0; i < gridSize.rows; i++) {
-    grid.push(Array(gridSize.cols).fill(false))
+    grid.push(Array(gridSize.cells).fill(false))
   }
   return grid
 }
 
-export const generateRandomGrid = (gridSize: {
-  rows: number
-  cols: number
-}) => {
+export const generateRandomGrid = (gridSize: GridSize) => {
   const grid = []
   const randomRow = () =>
-    Array.from(Array(gridSize.cols), () => Math.random() > 0.5)
+    Array.from(Array(gridSize.cells), () => Math.random() > 0.5)
 
   for (let i = 0; i < gridSize.rows; i++) {
     grid.push(randomRow())

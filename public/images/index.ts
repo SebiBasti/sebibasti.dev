@@ -4,7 +4,7 @@ import profilePicture from './profile.png'
 import gameOfLife from './project_game_of_life.png'
 import wandgestaltung from './project_wandgestaltung_reinl.png'
 
-interface customImageType {
+interface CustomImageType {
   link: string
   alt: string
   description: string
@@ -12,14 +12,14 @@ interface customImageType {
   external: boolean
 }
 
-const projectWandgestaltung: customImageType = {
+const projectWandgestaltung: CustomImageType = {
   link: 'https://www.wandgestaltung-reinl.de/',
   alt: 'picture Wandgestaltung Reinl',
   description: 'website\u00A0build\u00A0with Next.js\u00A0&\u00A0TypeScript',
   src: wandgestaltung,
   external: true
 }
-const projectGameOfLife: customImageType = {
+const projectGameOfLife: CustomImageType = {
   link: '/gameoflife',
   alt: 'picture project game of life',
   description:
