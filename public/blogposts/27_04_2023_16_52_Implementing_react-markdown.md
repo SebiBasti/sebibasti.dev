@@ -18,7 +18,7 @@ This has now resulted in the following structure:
 
 &nbsp;
 
-## Laoding of blogpost markdown files
+## Loading of blogpost markdown files
 
 I have the following structure in my `Next` project:
 
