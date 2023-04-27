@@ -1,7 +1,8 @@
 import Image from 'next/image'
 
-import { Projects } from '@/components'
 import { profilePicture } from '~/images'
+
+import Blog from '@/components/Blog'
 
 import home from '@/styles/home.module.scss'
 
@@ -21,10 +22,12 @@ export default function Home() {
           />
         </div>
         <h1>
-          Hey there! Welcome to my personal portfolio and digital playground.
+          Hey there!
+          <br />
+          Welcome to my blog and digital playground.
         </h1>
       </section>
-      <Projects />
+      <Blog />
     </main>
   )
 }

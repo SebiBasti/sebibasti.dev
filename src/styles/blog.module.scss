@@ -8,5 +8,46 @@
     box-shadow: 0 0 2px var(--grey);
     background-color: var(--black);
     padding: 1rem;
+    font-size: clamp(0.8rem, 3vw, 1rem);
+
+    a {
+      color: var(--white);
+      text-decoration: underline;
+    }
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--grey);
+
+  h2 {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  small {
+    padding-left: 0.5rem;
+    text-align: right;
+  }
+}
+
+.code {
+  vertical-align: bottom;
+  box-shadow: 0 0 1px var(--grey);
+  background-color: var(--medium-black);
+  padding: 0 0.5rem;
+  font-family: var(--jetbrains-mono);
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    display: block;
+
+    small {
+      padding-left: 0;
+    }
   }
 }

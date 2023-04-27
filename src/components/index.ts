@@ -1,3 +1,4 @@
+export * from './Blog'
 export * from './Footer'
 export * from './Layout'
 export * from './Logo'
