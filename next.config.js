@@ -7,6 +7,14 @@ const nextConfig = {
   i18n: {
     locales: ['en'],
     defaultLocale: 'en'
+  },
+  // https://stackoverflow.com/a/75124844/13746045
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.md$/,
+      type: 'asset/source'
+    })
+    return config
   }
 }
 

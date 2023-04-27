@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+
+  article {
+    box-shadow: 0 0 2px var(--grey);
+    background-color: var(--black);
+    padding: 1rem;
+  }
+}
