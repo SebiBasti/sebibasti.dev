@@ -32,6 +32,7 @@ export default function Blog() {
             </span>
             <Markdown
               remarkPlugins={[remarkGfm]}
+              linkTarget="_blank"
               className={blogStyles.content}
               components={{
                 code({ node, inline, className, children, style, ...props }) {
