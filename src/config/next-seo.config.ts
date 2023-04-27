@@ -3,14 +3,14 @@ import { DefaultSeoProps } from 'next-seo'
 const config: DefaultSeoProps = {
   title: 'sebibasti.dev',
   description:
-    'Sebastian Remm - Fullstack Web-Development | Portfolio Website & Digital Playground',
+    'Sebastian Remm - Fullstack Web-Development | Blog & Digital Playground',
   openGraph: {
     type: 'website',
     locale: 'en_us',
     url: 'https://www.sebibasti.dev/',
     title: 'sebibasti.dev',
     description:
-      'Sebastian Remm - Fullstack Web-Development | Portfolio Website & Digital Playground',
+      'Sebastian Remm - Fullstack Web-Development | Blog & Digital Playground',
     images: [
       {
         url: 'https://www.sebibasti.dev/images/meta/og_default.png',
