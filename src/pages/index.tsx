@@ -1,10 +1,11 @@
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 
 import { profilePicture } from '~/images'
 
-import Blog from '@/components/Blog'
-
 import home from '@/styles/home.module.scss'
+
+const Blog = dynamic(() => import('@/components/Blog'))
 
 export default function Home() {
   return (
