@@ -12,7 +12,7 @@ export function Mouselight() {
           left: `${event.clientX}px`,
           top: `${event.clientY}px`
         },
-        { duration: 500, fill: 'forwards' }
+        { duration: 200, fill: 'forwards' }
       )
     }
   }
