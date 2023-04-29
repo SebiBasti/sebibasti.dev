@@ -1,7 +1,10 @@
 import dynamic from 'next/dynamic'
 import { JetBrains_Mono } from 'next/font/google'
 
+import { MouseEvent } from 'react'
+
 import { importAll } from '@/utils'
+import cn from 'classnames'
 import Markdown from 'react-markdown'
 import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import remarkGfm from 'remark-gfm'
@@ -18,7 +21,9 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--jetbrains-mono'
 })
 
-const blogPosts = importAll(require.context('~/blogposts', false, /\.md$/))
+const blogPosts = importAll(
+  require.context('~/blogposts', false, /\.md$/)
+).reverse()
 
 export default function Blog() {
   return (
@@ -40,7 +45,17 @@ export default function Blog() {
                   return !inline && match ? (
                     <SyntaxHighlighter
                       style={materialDark}
-                      className={jetbrainsMono.variable}
+                      className={cn(
+                        jetbrainsMono.variable,
+                        blogStyles['code-wrapped']
+                      )}
+                      onClick={(event: MouseEvent) => {
+                        if (event.target instanceof HTMLElement) {
+                          event.target.classList.remove(
+                            blogStyles['code-wrapped']
+                          )
+                        }
+                      }}
                       showLineNumbers={true}
                       lineNumberStyle={{
                         minWidth: '3.25em'

@@ -42,6 +42,33 @@
   font-family: var(--jetbrains-mono);
 }
 
+.code-wrapped {
+  max-height: 300px;
+  overflow: hidden !important;
+
+  &:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -1px 1px var(--grey);
+    background-color: var(--medium-black);
+    width: 100%;
+    height: 2rem;
+    content: '';
+  }
+
+  &:after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    vertical-align: center;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+    padding-bottom: 0.25rem;
+    content: 'Click to expand';
+  }
+}
+
 @media screen and (max-width: 480px) {
   .header {
     display: block;
