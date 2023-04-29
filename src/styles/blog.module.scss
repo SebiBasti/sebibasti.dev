@@ -4,6 +4,10 @@
   gap: 2rem;
   padding: 1rem;
 
+  pre {
+    font-family: inherit !important;
+  }
+
   article {
     box-shadow: 0 0 2px var(--grey);
     background-color: var(--black);
@@ -77,6 +81,7 @@
     cursor: pointer;
     padding-bottom: 0.25rem;
     content: 'Click to expand';
+    font-family: inherit;
   }
 }
 
