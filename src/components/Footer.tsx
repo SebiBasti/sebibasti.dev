@@ -1,12 +1,14 @@
-import footerStyle from '@/styles/footer.module.scss'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
+
 import { codewars, github, linkedin } from '~/icons'
+
+import footerStyle from '@/styles/footer.module.scss'
 
 export function Footer() {
   return (
     <footer className={footerStyle.container}>
-      <p>Sebastian&nbsp;Remm ©&nbsp;2021&nbsp;-&nbsp;2023</p>
+      <p>Sebastian&nbsp;Remm ©&nbsp;2021&nbsp;-&nbsp;2024</p>
       <Link
         href="https://github.com/SebiBasti"
         target="_blank"

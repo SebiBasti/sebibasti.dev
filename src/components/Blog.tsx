@@ -37,13 +37,13 @@ export default function Blog() {
             </span>
             <Markdown
               remarkPlugins={[remarkGfm]}
-              linkTarget="_blank"
+              // linkTarget="_blank"
               className={blogStyles.content}
               components={{
-                code({ node, inline, className, children, style, ...props }) {
+                code({ node, className, children, style, ...props }) {
                   const match = /language-(\w+)/.exec(className || '')
                   const lines = String(children).split('\n').length
-                  return !inline && match ? (
+                  return match ? (
                     <SyntaxHighlighter
                       style={materialDark}
                       className={cn(jetbrainsMono.variable, blogStyles.code, {
