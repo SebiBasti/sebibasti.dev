@@ -1,4 +1,4 @@
-@import './overrides/primereact.module.scss';
+@use 'overrides/primereact.module.scss';
 
 .no-scroll-select {
   overflow: hidden;
